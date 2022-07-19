@@ -7,7 +7,7 @@ target/*.original
 src/test
 .mvn
 mvnw*
-
+*.DS_Store
 
 ### STS ###
 .apt_generated
