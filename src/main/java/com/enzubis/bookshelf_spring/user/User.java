@@ -19,7 +19,7 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    @Column(unique = true)
+    @Column(unique = true, columnDefinition = "VARCHAR(36)")
     private String uuid;
 
     @OneToOne(mappedBy = "user")
