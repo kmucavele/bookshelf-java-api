@@ -1,7 +1,5 @@
 package com.enzubis.bookshelf_spring.author;
 
-import org.springframework.context.annotation.EnableMBeanExport;
-
 import javax.persistence.*;
 
 @Entity
@@ -13,7 +11,8 @@ public class Author {
 
     private String name;
 
-    public Author(){}
+    public Author() {
+    }
 
     public Author(String name) {
         this.name = name;
