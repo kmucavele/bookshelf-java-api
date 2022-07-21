@@ -28,10 +28,12 @@ public class Bookshelf {
     )
     private Set<Book> books = new HashSet<>();
 
-    @Column(name = "reading_status")
+    // int(1 = not done, 2 = reading, 3 = done)
+    @Column(name = "reading_status", columnDefinition = " integer default 0")
     private int readingStatus;
 
-    @Column(name = "on_wishlist")
+
+    @Column(name = "on_wishlist", columnDefinition = "boolean default false")
     private boolean onWishlist;
 
     public Bookshelf() {

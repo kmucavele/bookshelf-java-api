@@ -28,8 +28,8 @@ public class Book {
 
     private String genre;
 
-    @Column(unique = true)
-    private int isbn;
+    @Column(columnDefinition = "VARCHAR(13)", unique = true)
+    private String isbn;
 
     @ManyToMany(mappedBy = "books")
     private Set<Bookshelf> bookshelves = new HashSet<>();
@@ -37,7 +37,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, Set<Author> authors, String genre, int isbn) {
+    public Book(String title, Set<Author> authors, String genre, String isbn) {
         this.title = title;
         this.authors = authors;
         this.genre = genre;
@@ -73,11 +73,12 @@ public class Book {
         this.genre = genre;
     }
 
-    public int getIsbn() {
+
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
