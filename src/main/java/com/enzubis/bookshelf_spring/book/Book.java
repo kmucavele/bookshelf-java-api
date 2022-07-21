@@ -18,6 +18,7 @@ public class Book {
 
     private String genre;
 
+    @Column(unique = true)
     private int isbn;
 
     public Book() {

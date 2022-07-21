@@ -14,8 +14,10 @@ public class User {
 
     private String fullName;
 
+    @Column(unique = true)
     private String email;
 
+    @Column(unique = true)
     private String uuid;
 
     public User(){}
