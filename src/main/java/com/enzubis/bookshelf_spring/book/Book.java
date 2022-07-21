@@ -8,7 +8,6 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
 
     @Column(name = "title")
@@ -17,10 +16,8 @@ public class Book {
     @Column(name = "author_id")
     private int author;
 
-    @Column(name = "genre")
     private String genre;
 
-    @Column(name = "isbn")
     private int isbn;
 
     public Book() {
