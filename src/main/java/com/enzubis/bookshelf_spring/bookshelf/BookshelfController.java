@@ -32,6 +32,7 @@ public class BookshelfController {
 
     @GetMapping(path = "books")
     public List<Book> getBooks(){
+        bookService.addAuthor(authorService.getAuthors().get(1), bookService.getBooks().get(1));
         return  bookService.getBooks();
     }
 
@@ -39,5 +40,7 @@ public class BookshelfController {
     public List<Author> getAuthors(){
         return authorService.getAuthors();
     }
+
+
 
 }
