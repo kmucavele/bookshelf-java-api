@@ -3,6 +3,8 @@ package com.enzubis.bookshelf_spring.author;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AuthorService {
 
@@ -12,4 +14,10 @@ public class AuthorService {
     public AuthorService(AuthorRepository authorRepository){
         this.authorRepository = authorRepository;
     }
+
+    public List<Author> getAuthors() {
+       return authorRepository.findAll();
+    }
+
+
 }
