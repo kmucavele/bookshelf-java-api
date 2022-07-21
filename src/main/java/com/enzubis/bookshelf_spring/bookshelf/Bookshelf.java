@@ -1,8 +1,11 @@
 package com.enzubis.bookshelf_spring.bookshelf;
 
+import com.enzubis.bookshelf_spring.book.Book;
 import com.enzubis.bookshelf_spring.user.User;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -17,8 +20,13 @@ public class Bookshelf {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @Column(name = "book_id")
-    private int bookId;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "books_in_bookshelf",
+            joinColumns = @JoinColumn(name = "bookshelf_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id")
+    )
+    private Set<Book> books = new HashSet<>();
 
     @Column(name = "reading_status")
     private int readingStatus;
@@ -29,9 +37,9 @@ public class Bookshelf {
     public Bookshelf() {
     }
 
-    public Bookshelf(User userId, int bookId, int readingStatus, boolean onWishlist) {
+    public Bookshelf(User userId, Set<Book> books, int readingStatus, boolean onWishlist) {
         this.user = userId;
-        this.bookId = bookId;
+        this.books = books;
         this.readingStatus = readingStatus;
         this.onWishlist = onWishlist;
     }

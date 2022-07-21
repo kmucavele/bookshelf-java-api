@@ -1,6 +1,10 @@
 package com.enzubis.bookshelf_spring.book;
 
+import com.enzubis.bookshelf_spring.bookshelf.Bookshelf;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "books")
@@ -20,6 +24,9 @@ public class Book {
 
     @Column(unique = true)
     private int isbn;
+
+    @ManyToMany(mappedBy = "books")
+    private Set<Bookshelf> bookshelves = new HashSet<>();
 
     public Book() {
     }
