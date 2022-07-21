@@ -1,6 +1,6 @@
 package com.enzubis.bookshelf_spring.bookshelf;
 
-import org.springframework.context.annotation.EnableMBeanExport;
+import com.enzubis.bookshelf_spring.user.User;
 
 import javax.persistence.*;
 
@@ -13,8 +13,9 @@ public class Bookshelf {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id")
-    private int userId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
     @Column(name = "book_id")
     private int bookId;
@@ -25,10 +26,11 @@ public class Bookshelf {
     @Column(name = "on_wishlist")
     private boolean onWishlist;
 
-    public Bookshelf(){}
+    public Bookshelf() {
+    }
 
-    public Bookshelf(int userId, int bookId, int readingStatus, boolean onWishlist) {
-        this.userId = userId;
+    public Bookshelf(User userId, int bookId, int readingStatus, boolean onWishlist) {
+        this.user = userId;
         this.bookId = bookId;
         this.readingStatus = readingStatus;
         this.onWishlist = onWishlist;

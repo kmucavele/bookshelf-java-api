@@ -1,5 +1,7 @@
 package com.enzubis.bookshelf_spring.user;
 
+import com.enzubis.bookshelf_spring.bookshelf.Bookshelf;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,13 +22,21 @@ public class User {
     @Column(unique = true)
     private String uuid;
 
-    public User(){}
+    @OneToOne(mappedBy = "user")
+    private Bookshelf bookshelf;
+
+    public User() {
+    }
 
     public User(String username, String fullName, String email, String uuid) {
         this.username = username;
         this.fullName = fullName;
         this.email = email;
         this.uuid = uuid;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getUsername() {
