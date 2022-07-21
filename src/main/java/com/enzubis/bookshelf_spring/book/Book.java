@@ -1,5 +1,6 @@
 package com.enzubis.bookshelf_spring.book;
 
+import com.enzubis.bookshelf_spring.author.Author;
 import com.enzubis.bookshelf_spring.bookshelf.Bookshelf;
 
 import javax.persistence.*;
@@ -17,8 +18,13 @@ public class Book {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "author_id")
-    private int author;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "book_authors",
+            joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id")
+    )
+    private Set<Author> authors = new HashSet<>();
 
     private String genre;
 
@@ -31,9 +37,9 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, int author, String genre, int isbn) {
+    public Book(String title, Set<Author> authors, String genre, int isbn) {
         this.title = title;
-        this.author = author;
+        this.authors = authors;
         this.genre = genre;
         this.isbn = isbn;
     }
@@ -54,13 +60,10 @@ public class Book {
         this.title = title;
     }
 
-    public int getAuthor() {
-        return author;
+    public Set<Author> getAuthor() {
+        return authors;
     }
 
-    public void setAuthor(int author) {
-        this.author = author;
-    }
 
     public String getGenre() {
         return genre;
@@ -83,7 +86,7 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", author=" + author +
+                ", author=" + authors +
                 ", genre='" + genre + '\'' +
                 ", isbn=" + isbn +
                 '}';
