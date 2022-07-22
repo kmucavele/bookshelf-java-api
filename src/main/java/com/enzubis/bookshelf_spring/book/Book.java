@@ -2,6 +2,7 @@ package com.enzubis.bookshelf_spring.book;
 
 import com.enzubis.bookshelf_spring.author.Author;
 import com.enzubis.bookshelf_spring.bookshelf.Bookshelf;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -31,8 +32,17 @@ public class Book {
     @Column(columnDefinition = "VARCHAR(13)", unique = true)
     private String isbn;
 
-    @ManyToMany(mappedBy = "books")
-    private Set<Bookshelf> bookshelves = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "bookshelf_id")
+    private Bookshelf bookshelves;
+
+    // int(1 = not done, 2 = reading, 3 = done)
+    @Column(name = "reading_status", columnDefinition = " integer default 0")
+    private int readingStatus;
+
+
+    @Column(name = "on_wishlist", columnDefinition = "boolean default false")
+    private boolean onWishlist;
 
     public Book() {
     }
@@ -81,6 +91,23 @@ public class Book {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
+
+    public int getReadingStatus() {
+        return readingStatus;
+    }
+
+    public void setReadingStatus(int readingStatus) {
+        this.readingStatus = readingStatus;
+    }
+
+    public boolean isOnWishlist() {
+        return onWishlist;
+    }
+
+    public void setOnWishlist(boolean onWishlist) {
+        this.onWishlist = onWishlist;
+    }
+
 
     @Override
     public String toString() {

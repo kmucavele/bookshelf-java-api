@@ -15,34 +15,36 @@ public class Bookshelf {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+/*
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
+    @OneToMany(mappedBy = "bookshelves")
+    //@JoinTable(name = "bookshelf_id")
+*//*    @JoinTable(
             name = "books_in_bookshelf",
-            joinColumns = @JoinColumn(name = "bookshelf_id", referencedColumnName = "id"),
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id")
-    )
+    )*//*
     private Set<Book> books = new HashSet<>();
-
-    // int(1 = not done, 2 = reading, 3 = done)
-    @Column(name = "reading_status", columnDefinition = " integer default 0")
-    private int readingStatus;
-
-
-    @Column(name = "on_wishlist", columnDefinition = "boolean default false")
-    private boolean onWishlist;
 
     public Bookshelf() {
     }
 
-    public Bookshelf(User userId, Set<Book> books, int readingStatus, boolean onWishlist) {
-        this.user = userId;
-        this.books = books;
-        this.readingStatus = readingStatus;
-        this.onWishlist = onWishlist;
+    public User getUser() {
+        return user;
     }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public Long getId() {
+        return id;
+    }*/
 }
