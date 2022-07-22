@@ -15,18 +15,12 @@ public class Bookshelf {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-/*
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     @OneToMany(mappedBy = "bookshelves")
-    //@JoinTable(name = "bookshelf_id")
-*//*    @JoinTable(
-            name = "books_in_bookshelf",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id")
-    )*//*
     private Set<Book> books = new HashSet<>();
 
     public Bookshelf() {
@@ -46,5 +40,5 @@ public class Bookshelf {
 
     public Long getId() {
         return id;
-    }*/
+    }
 }
