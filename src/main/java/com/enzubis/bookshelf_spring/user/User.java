@@ -1,6 +1,7 @@
 package com.enzubis.bookshelf_spring.user;
 
 import com.enzubis.bookshelf_spring.book.Book;
+import org.springframework.context.annotation.Primary;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -10,8 +11,8 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(unique = true, columnDefinition = "VARCHAR(36)")
+    private String uuid;
 
     private String username;
 
@@ -19,9 +20,6 @@ public class User {
 
     @Column(unique = true)
     private String email;
-
-    @Column(unique = true, columnDefinition = "VARCHAR(36)")
-    private String uuid;
 
     @OneToMany(mappedBy = "user")
     private Set<Book> books;
@@ -36,8 +34,8 @@ public class User {
         this.uuid = uuid;
     }
 
-    public Long getId() {
-        return id;
+    public String getId() {
+        return uuid;
     }
 
     public String getUsername() {
