@@ -18,4 +18,8 @@ public class UserService {
     public List<User> getUsers() {
         return userRepository.findAll();
     }
+
+    public User getUserByUUID(String uuid){
+        return userRepository.findUserByUuid(uuid);
+    }
 }
