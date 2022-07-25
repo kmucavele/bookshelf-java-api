@@ -1,7 +1,7 @@
 package com.enzubis.bookshelf_spring.user;
 
 import com.enzubis.bookshelf_spring.book.Book;
-import org.springframework.context.annotation.Primary;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -11,6 +11,7 @@ import java.util.Set;
 public class User {
 
     @Id
+    @JsonIgnore
     @Column(unique = true, columnDefinition = "VARCHAR(36)")
     private String uuid;
 
