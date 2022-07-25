@@ -1,6 +1,7 @@
 package com.enzubis.bookshelf_spring.book;
 
 import com.enzubis.bookshelf_spring.author.Author;
+import com.enzubis.bookshelf_spring.user.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
@@ -46,6 +47,10 @@ public class Book {
 
     @Column(name = "on_wishlist", columnDefinition = "boolean default false")
     private boolean onWishlist;
+
+    @ManyToOne
+    @JoinColumn(name = "user_uuid")
+    private User user;
 
     public Book() {
     }

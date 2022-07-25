@@ -1,8 +1,9 @@
 package com.enzubis.bookshelf_spring.user;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.enzubis.bookshelf_spring.book.Book;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -21,6 +22,9 @@ public class User {
 
     @Column(unique = true, columnDefinition = "VARCHAR(36)")
     private String uuid;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Book> books;
 
     public User() {
     }
