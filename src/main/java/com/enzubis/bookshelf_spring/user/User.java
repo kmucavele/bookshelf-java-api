@@ -72,4 +72,11 @@ public class User {
         this.uuid = uuid;
     }
 
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
 }
