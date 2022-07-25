@@ -1,6 +1,5 @@
 package com.enzubis.bookshelf_spring.user;
 
-import com.enzubis.bookshelf_spring.bookshelf.Bookshelf;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -22,10 +21,6 @@ public class User {
 
     @Column(unique = true, columnDefinition = "VARCHAR(36)")
     private String uuid;
-
-    @JsonIgnore
-    @OneToOne(mappedBy = "user")
-    private Bookshelf bookshelf;
 
     public User() {
     }
@@ -73,11 +68,4 @@ public class User {
         this.uuid = uuid;
     }
 
-    public Bookshelf getBookshelf() {
-        return bookshelf;
-    }
-
-    public void setBookshelf(Bookshelf bookshelf) {
-        this.bookshelf = bookshelf;
-    }
 }
