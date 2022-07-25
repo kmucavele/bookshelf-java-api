@@ -1,8 +1,10 @@
 package com.enzubis.bookshelf_spring.book;
 
 import com.enzubis.bookshelf_spring.author.Author;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,6 +26,12 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id")
     )
     private Set<Author> authors = new HashSet<>();
+
+
+    // dop - date of publication
+    @JsonFormat(pattern="dd-MM-yyyy")
+    @Column(name = "date_of_publication", columnDefinition = "DATE")
+    private Date dop;
 
     private String genre;
 
@@ -103,6 +111,13 @@ public class Book {
         this.onWishlist = onWishlist;
     }
 
+    public Date getDop() {
+        return dop;
+    }
+
+    public void setDop(Date dop) {
+        this.dop = dop;
+    }
 
     @Override
     public String toString() {
