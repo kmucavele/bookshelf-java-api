@@ -17,7 +17,7 @@ public class BookshelfApiServices {
     private final UserService userService;
 
     @Autowired
-    public BookshelfApiServices(BookshelfApiServices bookshelfApiServices, BookService bookService, AuthorService authorService,
+    public BookshelfApiServices(BookService bookService, AuthorService authorService,
                                 UserService userService){
         this.bookService = bookService;
         this.userService = userService;
