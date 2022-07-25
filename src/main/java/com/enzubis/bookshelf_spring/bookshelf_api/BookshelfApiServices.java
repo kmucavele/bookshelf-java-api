@@ -3,6 +3,7 @@ package com.enzubis.bookshelf_spring.bookshelf_api;
 import com.enzubis.bookshelf_spring.author.AuthorService;
 import com.enzubis.bookshelf_spring.book.Book;
 import com.enzubis.bookshelf_spring.book.BookService;
+import com.enzubis.bookshelf_spring.user.User;
 import com.enzubis.bookshelf_spring.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,13 @@ public class BookshelfApiServices {
 
     public List<Book> getBooks() {
         return bookService.getBooks();
+    }
+
+    public List<User> getUsers() {
+        return userService.getUsers();
+    }
+
+    public void addBookToUser() {
+
     }
 }

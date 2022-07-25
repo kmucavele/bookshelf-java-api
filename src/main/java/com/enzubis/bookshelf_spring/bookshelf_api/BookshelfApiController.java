@@ -1,6 +1,7 @@
 package com.enzubis.bookshelf_spring.bookshelf_api;
 
 import com.enzubis.bookshelf_spring.book.Book;
+import com.enzubis.bookshelf_spring.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,12 @@ public class BookshelfApiController {
     @GetMapping(path = "books")
     public List<Book> getBooks() {
         return bookshelfApiServices.getBooks();
+    }
+
+    @GetMapping(path = "users")
+    public List<User> getUsers() {
+        bookshelfApiServices.addBookToUser();
+        return bookshelfApiServices.getUsers();
     }
 
 }
