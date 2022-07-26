@@ -34,7 +34,7 @@ public class BookshelfApiServices {
     }
 
     public void addBookToUser(){
-        getUserByUUID("5c9d212e-f85a-4f6c-a046-4df080b0b329").getBooks().add(bookService.getBooks().get(2));
+        getUserByUUID("5c9d212e-f85a-4f6c-a046-4df080b0b329");
     }
 
     public User getUserByUUID(String uuid) {

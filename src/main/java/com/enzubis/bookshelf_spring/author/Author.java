@@ -17,7 +17,7 @@ public class Author {
     private String name;
 
     @ManyToMany(mappedBy = "authors")
-    private List<Book> books = new ArrayList<>();
+    private List<Book> books;
 
     public Author() {
     }
