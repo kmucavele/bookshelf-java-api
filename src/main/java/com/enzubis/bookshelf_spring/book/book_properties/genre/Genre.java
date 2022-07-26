@@ -20,6 +20,10 @@ public class Genre {
     
     public Genre(){}
 
+    public Genre(String genre){
+        this.genre = genre;
+    }
+
     public Long getId() {
         return id;
     }

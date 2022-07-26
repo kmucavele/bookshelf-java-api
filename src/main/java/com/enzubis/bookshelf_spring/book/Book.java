@@ -6,8 +6,7 @@ import com.enzubis.bookshelf_spring.book.book_properties.publisher.Publisher;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
+import java.sql.Date;
 import java.util.Set;
 
 @Entity
@@ -30,7 +29,7 @@ public class Book {
     private Set<Author> authors;
 
     // dop - date of publication
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     @Column(name = "date_of_publication", columnDefinition = "DATE")
     private Date dateOfPublication;
 
@@ -46,10 +45,13 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, Set<Author> authors, Set<Genre> genres, String isbn) {
+    public Book(String title, Set<Author> authors, String dateOfPublication, Set<Genre> genres, Set<Publisher> publishers,
+                String isbn) {
         this.title = title;
         this.authors = authors;
+        this.dateOfPublication = Date.valueOf(dateOfPublication);
         this.genres = genres;
+        this.publishers = publishers;
         this.isbn = isbn;
     }
 
