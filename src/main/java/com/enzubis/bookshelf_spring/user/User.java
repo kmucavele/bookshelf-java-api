@@ -12,7 +12,6 @@ import java.util.Set;
 public class User {
 
     @Id
-    @JsonIgnore
     @Column(unique = true, columnDefinition = "VARCHAR(36)")
     private String uuid;
 
