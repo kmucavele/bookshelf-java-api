@@ -1,6 +1,7 @@
 package com.enzubis.bookshelf_spring.user;
 
 import com.enzubis.bookshelf_spring.book.Book;
+import com.enzubis.bookshelf_spring.bookshelf_api.Bookshelf;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -23,7 +24,7 @@ public class User {
     private String email;
 
     @OneToMany(mappedBy = "user")
-    private Set<Book> books;
+    private Set<Bookshelf> books;
 
     public User() {
     }
@@ -71,11 +72,11 @@ public class User {
         this.uuid = uuid;
     }
 
-    public Set<Book> getBooks() {
+    public Set<Bookshelf> getBooks() {
         return books;
     }
 
-    public void setBooks(Set<Book> books) {
+    public void setBooks(Set<Bookshelf> books) {
         this.books = books;
     }
 }

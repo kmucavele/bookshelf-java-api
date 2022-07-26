@@ -1,5 +1,7 @@
 package com.enzubis.bookshelf_spring.book.book_properties.genre;
 
+import com.enzubis.bookshelf_spring.book.Book;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,6 +13,10 @@ public class Genre {
     
     @Column(name = "genre")
     private String genre;
+
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
     
     public Genre(){}
 

@@ -1,6 +1,9 @@
 package com.enzubis.bookshelf_spring.book.book_properties.publisher;
 
+import com.enzubis.bookshelf_spring.book.Book;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "publisher")
@@ -11,6 +14,14 @@ public class Publisher {
 
     @Column(name = "publisher")
     private String name;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "book_publishers",
+        joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "publisher_id", referencedColumnName = "id")
+    )
+    private List<Book> books;
+
 
     public Publisher(){}
 

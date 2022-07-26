@@ -1,7 +1,8 @@
 package com.enzubis.bookshelf_spring.book;
 
 import com.enzubis.bookshelf_spring.author.Author;
-import com.enzubis.bookshelf_spring.user.User;
+import com.enzubis.bookshelf_spring.book.book_properties.genre.Genre;
+import com.enzubis.bookshelf_spring.book.book_properties.publisher.Publisher;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
@@ -26,39 +27,29 @@ public class Book {
             joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id")
     )
-    private Set<Author> authors = new HashSet<>();
-
+    private Set<Author> authors;
 
     // dop - date of publication
     @JsonFormat(pattern="dd-MM-yyyy")
     @Column(name = "date_of_publication", columnDefinition = "DATE")
-    private Date dop;
+    private Date dateOfPublication;
 
-    private String genre;
+    @OneToMany(mappedBy = "book")
+    private Set<Genre> genres;
+
+    @ManyToMany(mappedBy = "books")
+    private Set<Publisher> publishers;
 
     @Column(columnDefinition = "VARCHAR(13)", unique = true)
     private String isbn;
 
-
-    // int(1 = not done, 2 = reading, 3 = done)
-    @Column(name = "reading_status", columnDefinition = "integer default 0")
-    private int readingStatus;
-
-
-    @Column(name = "on_wishlist", columnDefinition = "boolean default false")
-    private boolean onWishlist;
-
-    @ManyToOne
-    @JoinColumn(name = "user_uuid")
-    private User user;
-
     public Book() {
     }
 
-    public Book(String title, Set<Author> authors, String genre, String isbn) {
+    public Book(String title, Set<Author> authors, Set<Genre> genres, String isbn) {
         this.title = title;
         this.authors = authors;
-        this.genre = genre;
+        this.genres = genres;
         this.isbn = isbn;
     }
 
@@ -82,15 +73,13 @@ public class Book {
         return authors;
     }
 
-
-    public String getGenre() {
-        return genre;
+    public Set<Genre> getGenres() {
+        return genres;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public void setGenres(Set<Genre> genres) {
+        this.genres = genres;
     }
-
 
     public String getIsbn() {
         return isbn;
@@ -100,28 +89,12 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public int getReadingStatus() {
-        return readingStatus;
+    public Date getDateOfPublication() {
+        return dateOfPublication;
     }
 
-    public void setReadingStatus(int readingStatus) {
-        this.readingStatus = readingStatus;
-    }
-
-    public boolean isOnWishlist() {
-        return onWishlist;
-    }
-
-    public void setOnWishlist(boolean onWishlist) {
-        this.onWishlist = onWishlist;
-    }
-
-    public Date getDop() {
-        return dop;
-    }
-
-    public void setDop(Date dop) {
-        this.dop = dop;
+    public void setDateOfPublication(Date dateOfPublication) {
+        this.dateOfPublication = dateOfPublication;
     }
 
     @Override
@@ -130,7 +103,7 @@ public class Book {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", author=" + authors +
-                ", genre='" + genre + '\'' +
+                ", genre='" + genres + '\'' +
                 ", isbn=" + isbn +
                 '}';
     }
