@@ -38,11 +38,15 @@ public class BookshelfApiServices {
 
     public void addBookToUser(){
         User bell = getUserByUUID("5c9d212e-f85a-4f6c-a046-4df080b0b329");
+        Book amazonWomenOnTheMoon = bookService.getBooks().get(1);
         Book cornIsland = bookService.getBooks().get(2);
         Bookshelf bookshelf = new Bookshelf();
+        Bookshelf bookshelf1 = new Bookshelf();
         bookshelf.setBook(cornIsland);
+        bookshelf1.setBook(amazonWomenOnTheMoon);
+        bookshelf1.setUser(bell);
         bookshelf.setUser(bell);
-        bookshelfRepository.save(bookshelf);
+        bookshelfRepository.saveAll(List.of(bookshelf1, bookshelf));
     }
 
     public User getUserByUUID(String uuid) {
