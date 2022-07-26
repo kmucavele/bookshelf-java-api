@@ -2,6 +2,7 @@ package com.enzubis.bookshelf_spring.bookshelf_api;
 
 import com.enzubis.bookshelf_spring.book.Book;
 import com.enzubis.bookshelf_spring.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -19,6 +20,7 @@ public class Bookshelf {
     @Column(name = "on_wishlist", columnDefinition = "boolean default false")
     private boolean onWishlist;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_uuid")
     private User user;
@@ -43,5 +45,21 @@ public class Bookshelf {
 
     public void setOnWishlist(boolean onWishlist) {
         this.onWishlist = onWishlist;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
     }
 }

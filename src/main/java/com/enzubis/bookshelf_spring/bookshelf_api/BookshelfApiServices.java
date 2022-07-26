@@ -13,13 +13,16 @@ import java.util.List;
 @Service
 public class BookshelfApiServices {
 
+    private final BookshelfRepository bookshelfRepository;
+
     private final BookService bookService;
     private final AuthorService authorService;
     private final UserService userService;
 
     @Autowired
-    public BookshelfApiServices(BookService bookService, AuthorService authorService,
-                                UserService userService){
+    public BookshelfApiServices(BookshelfRepository bookshelfRepository, BookService bookService,
+                                AuthorService authorService, UserService userService){
+        this.bookshelfRepository = bookshelfRepository;
         this.bookService = bookService;
         this.userService = userService;
         this.authorService = authorService;
@@ -34,7 +37,12 @@ public class BookshelfApiServices {
     }
 
     public void addBookToUser(){
-        getUserByUUID("5c9d212e-f85a-4f6c-a046-4df080b0b329");
+        User bell = getUserByUUID("5c9d212e-f85a-4f6c-a046-4df080b0b329");
+        Book cornIsland = bookService.getBooks().get(2);
+        Bookshelf bookshelf = new Bookshelf();
+        bookshelf.setBook(cornIsland);
+        bookshelf.setUser(bell);
+        bookshelfRepository.save(bookshelf);
     }
 
     public User getUserByUUID(String uuid) {
