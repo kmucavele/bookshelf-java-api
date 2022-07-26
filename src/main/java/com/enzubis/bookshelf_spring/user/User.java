@@ -16,60 +16,18 @@ public class User {
     @Column(unique = true, columnDefinition = "VARCHAR(36)")
     private String uuid;
 
-    private String username;
-
-    private String fullName;
-
-    @Column(unique = true)
-    private String email;
-
     @OneToMany(mappedBy = "user")
     private Set<Bookshelf> books;
 
     public User() {
     }
 
-    public User(String username, String fullName, String email, String uuid) {
-        this.username = username;
-        this.fullName = fullName;
-        this.email = email;
+    public User(String uuid) {
         this.uuid = uuid;
-    }
-
-    public String getId() {
-        return uuid;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getUuid() {
         return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
     }
 
     public Set<Bookshelf> getBooks() {
