@@ -21,11 +21,15 @@ public class BookshelfConfig {
     CommandLineRunner commandLineRunner(UserRepository userRepository, BookRepository bookRepository) {
         return args -> {
             // Users test data
-            User eveline = new User("ce8e8326-624e-4485-8a91-c775ab702a3d");
-            User bell = new User("5c9d212e-f85a-4f6c-a046-4df080b0b329");
-            User allie = new User("18bbb34c-bb93-437f-bcb1-c7ec6263ede1");
-            User hurleigh = new User("e6018640-5181-4fcf-8693-0e6e0ac3ea40");
-            User levy = new User("a513f03c-b4b5-462c-8247-4de605d88954");
+            User eveline = new User("009BVWKVgHb0ERn3edblbJgAXwI2");
+            User bell = new User("AwIfVh5nQge00jnfzxVtwL81tS42");
+            User allie = new User("BNPW5oKLRhXD2UG11EpEndBdBzy2");
+            User hurleigh = new User("LuApbNIFD4RvdUFAakcAUBu2R6W2");
+            User levy = new User("TzOF19jkvPUzEg5rWtrSHQ49Esg2");
+            User test1 = new User("pfdHKkSHvJf8pbHnb0OEXcCgY6l1");
+            User test2 = new User("rHWb6nUXHRWd3APphm93XBWAJat2");
+            User test3 = new User("vtPvNjdbipYw1ZpNTItz773cwLm2");
+            User test4 = new User("w2CUnMBB1qRur8aRh8w0uW64fWC2");
 
 
             // Authors test data
