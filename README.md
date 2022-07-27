@@ -9,6 +9,16 @@
 
 ---
 
+#### Routes(GET):
+All Books:
+* localhost:8080/api/bookshelf/books
+
+All Users:
+* localhost:8080/api/users
+
+Bookshelf from a user (specified with userid/uuid):
+* localhost:8080/api/bookshelf/{userId}/books
+---
 #### Run the application on local server (default port: 8080)
 
 Requirements:
