@@ -29,7 +29,8 @@ public class Bookshelf {
     @JoinColumn(name = "book_id")
     private Book book;
 
-    public Bookshelf(){}
+    public Bookshelf() {
+    }
 
     public int getReadingStatus() {
         return readingStatus;

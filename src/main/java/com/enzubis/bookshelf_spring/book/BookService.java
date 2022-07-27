@@ -12,15 +12,15 @@ public class BookService {
     private final BookRepository bookRepository;
 
     @Autowired
-    public BookService(BookRepository bookRepository){
+    public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
-    public List<Book> getBooks(){
+    public List<Book> getBooks() {
         return bookRepository.findAll();
     }
 
-    public void addAuthor(Author author, Book book){
+    public void addAuthor(Author author, Book book) {
         book.getAuthor().add(author);
     }
 }

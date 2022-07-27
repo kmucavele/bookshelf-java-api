@@ -11,12 +11,12 @@ public class AuthorService {
     private final AuthorRepository authorRepository;
 
     @Autowired
-    public AuthorService(AuthorRepository authorRepository){
+    public AuthorService(AuthorRepository authorRepository) {
         this.authorRepository = authorRepository;
     }
 
     public List<Author> getAuthors() {
-       return authorRepository.findAll();
+        return authorRepository.findAll();
     }
 
 

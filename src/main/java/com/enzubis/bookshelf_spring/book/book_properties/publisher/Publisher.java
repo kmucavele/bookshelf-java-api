@@ -17,15 +17,16 @@ public class Publisher {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "book_publishers",
-        joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn(name = "publisher_id", referencedColumnName = "id")
+            joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "publisher_id", referencedColumnName = "id")
     )
     private List<Book> books;
 
 
-    public Publisher(){}
+    public Publisher() {
+    }
 
-    public Publisher(String name){
+    public Publisher(String name) {
         this.name = name;
     }
 

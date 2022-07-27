@@ -10,17 +10,18 @@ public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(name = "genre")
     private String genre;
 
     @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;
-    
-    public Genre(){}
 
-    public Genre(String genre){
+    public Genre() {
+    }
+
+    public Genre(String genre) {
         this.genre = genre;
     }
 

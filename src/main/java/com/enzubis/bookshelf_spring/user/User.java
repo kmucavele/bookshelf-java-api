@@ -1,8 +1,6 @@
 package com.enzubis.bookshelf_spring.user;
 
-import com.enzubis.bookshelf_spring.book.Book;
 import com.enzubis.bookshelf_spring.bookshelf_api.Bookshelf;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Set;

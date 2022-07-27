@@ -3,7 +3,6 @@ package com.enzubis.bookshelf_spring.author;
 import com.enzubis.bookshelf_spring.book.Book;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 
