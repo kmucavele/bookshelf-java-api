@@ -14,7 +14,7 @@
     <name>bookshelf_spring</name>
     <description>bookshelf_spring</description>
     <properties>
-        <java.version>17</java.version>
+        <java.version>11</java.version>
     </properties>
     <dependencies>
         <dependency>
