@@ -9,9 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
-public class BookshelfApiServices {
+public class BookshelfServices {
 
     private final BookshelfRepository bookshelfRepository;
 
@@ -20,8 +21,8 @@ public class BookshelfApiServices {
     private final UserService userService;
 
     @Autowired
-    public BookshelfApiServices(BookshelfRepository bookshelfRepository, BookService bookService,
-                                AuthorService authorService, UserService userService){
+    public BookshelfServices(BookshelfRepository bookshelfRepository, BookService bookService,
+                             AuthorService authorService, UserService userService) {
         this.bookshelfRepository = bookshelfRepository;
         this.bookService = bookService;
         this.userService = userService;
@@ -36,8 +37,9 @@ public class BookshelfApiServices {
         return userService.getUsers();
     }
 
-    public void addBookToUser(){
-        User bell = getUserByUUID("5c9d212e-f85a-4f6c-a046-4df080b0b329");
+    public void addBookToUser(String userId) {
+        User bell = userService.getUserByUUID(userId);
+
         Book amazonWomenOnTheMoon = bookService.getBooks().get(1);
         Book cornIsland = bookService.getBooks().get(2);
         Bookshelf bookshelf = new Bookshelf();
@@ -49,7 +51,8 @@ public class BookshelfApiServices {
         bookshelfRepository.saveAll(List.of(bookshelf1, bookshelf));
     }
 
-    public User getUserByUUID(String uuid) {
-        return userService.getUserByUUID(uuid);
+
+    public Set<Bookshelf> getUserBooks(String userId) {
+        return userService.getUserByUUID(userId).getBooks();
     }
 }
