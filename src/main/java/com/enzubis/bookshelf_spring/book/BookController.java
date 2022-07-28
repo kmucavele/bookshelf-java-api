@@ -1,6 +1,6 @@
 package com.enzubis.bookshelf_spring.book;
 
-import com.enzubis.bookshelf_spring.user.bookshelf.BookshelfServices;
+import com.enzubis.bookshelf_spring.bookshelf.BookshelfServices;
 import com.enzubis.bookshelf_spring.user.User;
 import com.enzubis.bookshelf_spring.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

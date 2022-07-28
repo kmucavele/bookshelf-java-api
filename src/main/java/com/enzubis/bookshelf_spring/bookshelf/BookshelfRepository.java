@@ -1,4 +1,4 @@
-package com.enzubis.bookshelf_spring.user.bookshelf;
+package com.enzubis.bookshelf_spring.bookshelf;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
