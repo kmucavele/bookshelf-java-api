@@ -1,4 +1,4 @@
-package com.enzubis.bookshelf_spring.bookshelf_api;
+package com.enzubis.bookshelf_spring.user.bookshelf;
 
 import com.enzubis.bookshelf_spring.author.Author;
 import com.enzubis.bookshelf_spring.book.Book;

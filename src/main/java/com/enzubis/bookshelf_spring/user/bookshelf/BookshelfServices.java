@@ -1,4 +1,4 @@
-package com.enzubis.bookshelf_spring.bookshelf_api;
+package com.enzubis.bookshelf_spring.user.bookshelf;
 
 import com.enzubis.bookshelf_spring.author.AuthorService;
 import com.enzubis.bookshelf_spring.book.Book;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class BookshelfServices {
@@ -37,22 +36,17 @@ public class BookshelfServices {
         return userService.getUsers();
     }
 
-    public void addBookToUser(String userId) {
-        User bell = userService.getUserByUUID(userId);
-
-        Book amazonWomenOnTheMoon = bookService.getBooks().get(1);
-        Book cornIsland = bookService.getBooks().get(2);
+    public void addBookToUser(User user, Book book) {
         Bookshelf bookshelf = new Bookshelf();
-        Bookshelf bookshelf1 = new Bookshelf();
-        bookshelf.setBook(cornIsland);
-        bookshelf1.setBook(amazonWomenOnTheMoon);
-        bookshelf1.setUser(bell);
-        bookshelf.setUser(bell);
-        bookshelfRepository.saveAll(List.of(bookshelf1, bookshelf));
+        bookshelf.setUser(user);
+        bookshelf.setBook(book);
+        bookshelfRepository.save(bookshelf);
     }
 
 
-    public Set<Bookshelf> getUserBooks(String userId) {
+/*    public Set<Bookshelf> getUserBooks(String userId) {
         return userService.getUserByUUID(userId).getBooks();
-    }
+    }*/
+
+
 }

@@ -1,6 +1,6 @@
 package com.enzubis.bookshelf_spring.user;
 
-import com.enzubis.bookshelf_spring.user.bookshelf_api.Bookshelf;
+import com.enzubis.bookshelf_spring.user.bookshelf.Bookshelf;
 
 import javax.persistence.*;
 import java.util.Set;
