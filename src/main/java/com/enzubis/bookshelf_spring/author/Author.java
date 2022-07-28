@@ -3,6 +3,7 @@ package com.enzubis.bookshelf_spring.author;
 import com.enzubis.bookshelf_spring.book.Book;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,7 +17,7 @@ public class Author {
     private String name;
 
     @ManyToMany(mappedBy = "authors")
-    private List<Book> books;
+    private List<Book> books = new ArrayList<>();
 
 
     public Author() {
@@ -48,6 +49,6 @@ public class Author {
     }
 
     public void setBooks(List<Book> books) {
-        this.books = books;
+        this.books.addAll(books);
     }
 }

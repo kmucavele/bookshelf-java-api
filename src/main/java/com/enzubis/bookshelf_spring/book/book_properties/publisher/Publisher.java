@@ -3,6 +3,7 @@ package com.enzubis.bookshelf_spring.book.book_properties.publisher;
 import com.enzubis.bookshelf_spring.book.Book;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,7 +21,7 @@ public class Publisher {
             joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "publisher_id", referencedColumnName = "id")
     )
-    private List<Book> books;
+    private List<Book> books = new ArrayList<>();
 
 
     public Publisher() {
@@ -44,14 +45,6 @@ public class Publisher {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public List<Book> getBooks() {

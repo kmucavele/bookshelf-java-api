@@ -27,12 +27,12 @@ public class BookController {
     }
 
 
-    @PostMapping(path = "{userId}/add", consumes = "application/json")
+    @PostMapping(path = "/{userId}/add", consumes = "application/json")
     public void addBook(
             @RequestBody Book book,
             @PathVariable("userId") String userId
     ) {
-        System.out.println(book);
+        System.out.println(book.getGenres());
         User user = userService.getUserByUUID(userId);
         System.out.println(user.getUuid());
         //bookshelfServices.addBookToUser(user, book);

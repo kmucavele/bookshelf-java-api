@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -26,7 +27,7 @@ public class Book {
             joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id")
     )
-    private Set<Author> authors;
+    private Set<Author> authors = new HashSet<>();
 
     // dop - date of publication
     @JsonFormat(pattern = "dd-MM-yyyy")
@@ -34,10 +35,10 @@ public class Book {
     private Date dateOfPublication;
 
     @OneToMany(mappedBy = "book")
-    private Set<Genre> genres;
+    private Set<Genre> genres = new HashSet<>();
 
     @ManyToMany(mappedBy = "books")
-    private Set<Publisher> publishers;
+    private Set<Publisher> publishers = new HashSet<>();
 
     @Column(columnDefinition = "VARCHAR(13)", unique = true)
     private String isbn;
@@ -52,7 +53,6 @@ public class Book {
         this.authors = authors;
         this.dateOfPublication = Date.valueOf(dateOfPublication);
         this.genres = genres;
-        this.publishers = publishers;
         this.isbn = isbn;
     }
 
@@ -78,7 +78,7 @@ public class Book {
     }
 
     public void setAuthors(Set<Author> authors) {
-        this.authors = authors;
+        this.authors.addAll(authors);
     }
 
     public Set<Publisher> getPublishers() {
