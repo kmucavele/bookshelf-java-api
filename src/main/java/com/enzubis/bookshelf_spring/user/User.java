@@ -3,6 +3,7 @@ package com.enzubis.bookshelf_spring.user;
 import com.enzubis.bookshelf_spring.bookshelf_api.Bookshelf;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -14,7 +15,7 @@ public class User {
     private String uuid;
 
     @OneToMany(mappedBy = "user")
-    private Set<Bookshelf> books;
+    private Set<Bookshelf> books = new HashSet<>();
 
     public User() {
     }
