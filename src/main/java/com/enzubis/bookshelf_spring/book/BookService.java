@@ -21,6 +21,6 @@ public class BookService {
     }
 
     public void addAuthor(Author author, Book book) {
-        book.getAuthor().add(author);
+        book.getAuthors().add(author);
     }
 }
