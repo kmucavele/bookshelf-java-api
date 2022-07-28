@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -20,23 +21,22 @@ public class UserService {
     }
 
     public User getUserByUUID(String uuid) {
-        User user = userRepository.findUserByUuid(uuid);
+        Optional<User> userOptional = userRepository.findUserByUuid(uuid);
 
-        try {
-            return user;
-        } catch (NullPointerException e) {
-            throw new IllegalStateException("User does not exist! Please register first.");
+        if (userOptional.isEmpty()) {
+            throw new IllegalStateException("User does not exist. Please register!");
         }
+
+        return userOptional.get();
     }
 
-    public void addUser(String uuid) {
-        User user = userRepository.findUserByUuid(uuid);
+    public void addUser(User user) {
+        Optional<User> userOptional = userRepository.findUserByUuid(user.getUuid());
 
-        try {
-
-            userRepository.save(user);
-        } catch (NullPointerException e) {
+        if (userOptional.isPresent()) { // TODO: ADD
             throw new IllegalStateException("User already exists!");
         }
+
+        userRepository.save(user);
     }
 }
