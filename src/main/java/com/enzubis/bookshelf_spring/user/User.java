@@ -1,6 +1,6 @@
 package com.enzubis.bookshelf_spring.user;
 
-import com.enzubis.bookshelf_spring.bookshelf_api.Bookshelf;
+import com.enzubis.bookshelf_spring.user.bookshelf_api.Bookshelf;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -27,11 +27,24 @@ public class User {
         return uuid;
     }
 
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
     public Set<Bookshelf> getBooks() {
         return books;
     }
 
     public void setBooks(Set<Bookshelf> books) {
         this.books = books;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "uuid='" + uuid + '\'' +
+                ", books=" + books +
+                '}';
     }
 }

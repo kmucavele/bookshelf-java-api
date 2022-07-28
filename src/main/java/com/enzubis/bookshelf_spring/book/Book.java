@@ -42,6 +42,7 @@ public class Book {
     @Column(columnDefinition = "VARCHAR(13)", unique = true)
     private String isbn;
 
+
     public Book() {
     }
 
@@ -54,6 +55,7 @@ public class Book {
         this.publishers = publishers;
         this.isbn = isbn;
     }
+
 
     public Long getId() {
         return id;
@@ -71,8 +73,20 @@ public class Book {
         this.title = title;
     }
 
-    public Set<Author> getAuthor() {
+    public Set<Author> getAuthors() {
         return authors;
+    }
+
+    public void setAuthors(Set<Author> authors) {
+        this.authors = authors;
+    }
+
+    public Set<Publisher> getPublishers() {
+        return publishers;
+    }
+
+    public void setPublishers(Set<Publisher> publishers) {
+        this.publishers = publishers;
     }
 
     public Set<Genre> getGenres() {
@@ -95,6 +109,10 @@ public class Book {
         return dateOfPublication;
     }
 
+    public void setDateOfPublication(String dateOfPublication) {
+        this.dateOfPublication = Date.valueOf(dateOfPublication);
+    }
+
     public void setDateOfPublication(Date dateOfPublication) {
         this.dateOfPublication = dateOfPublication;
     }
@@ -104,9 +122,11 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", author=" + authors +
-                ", genre='" + genres + '\'' +
-                ", isbn=" + isbn +
+                ", authors=" + authors +
+                ", dateOfPublication=" + dateOfPublication +
+                ", genres=" + genres +
+                ", publishers=" + publishers +
+                ", isbn='" + isbn + '\'' +
                 '}';
     }
 }
