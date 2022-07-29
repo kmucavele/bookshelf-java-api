@@ -7,3 +7,5 @@ startDetached:
 stop:
 	docker-compose down
 
+run:
+	docker build .

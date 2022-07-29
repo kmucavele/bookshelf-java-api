@@ -12,7 +12,7 @@ services:
   web:
     depends_on:
       - db
-    build: ./bookshelf-spring-boot
+    build: .
     env_file: ./.env
     ports:
       - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
