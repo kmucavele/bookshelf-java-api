@@ -3,7 +3,11 @@ package com.enzubis.bookshelf_spring.book.book_properties.publisher;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface PublisherRepository extends JpaRepository<Publisher, Long> {
-    Publisher findPublisherByName(String publisher);
+    Optional<Publisher> findPublisherByName(String publisher);
+    Optional<Publisher> findPublisherByPublisher(Publisher publisher);
+
 }
