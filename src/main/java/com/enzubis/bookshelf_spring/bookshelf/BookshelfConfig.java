@@ -54,14 +54,13 @@ public class BookshelfConfig {
             Genre musical = new Genre("Musical");
 
 
-            Book thrive = new Book("Thrive", Set.of(zollyGallyon), "2012-07-25", Set.of(drama),
-                    Set.of(macejkovicFeeney), "938323406-7");
+            Book thrive = new Book("Thrive", Set.of(zollyGallyon), "2012-07-25", Set.of(drama), macejkovicFeeney, "938323406-7");
 
             Book amazonWomenOnTheMoon = new Book("Amazon Women on the Moon", Set.of(cathrynEthridge, estevanHackett), "1990-07-25", Set.of(horror, romance),
-                    Set.of(kuhnInc, mayertKoepp), "099315114-0");
+                    mayertKoepp, "099315114-0");
 
             Book cornIsland = new Book("Corn Island", Set.of(farahBlaase, estevanHackett, kathyeLindmark), "2004-05-07", Set.of(comedy, drama, musical),
-                    Set.of(friesenAndSons), "696409388-5");
+                    friesenAndSons, "696409388-5");
 
             // insert test users into users table
             userRepository.saveAll(
@@ -69,9 +68,9 @@ public class BookshelfConfig {
             );
 
             // insert test books into books table
-            bookRepository.saveAll(
+           /* bookRepository.saveAll(
                     List.of(thrive, amazonWomenOnTheMoon, cornIsland)
-            );
+            );*/
         };
     }
 }

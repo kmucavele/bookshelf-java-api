@@ -54,15 +54,15 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, Set<Author> authors, String dateOfPublication, Set<Genre> genres, Set<Publisher> publisher,
-                String isbn) {
+    public Book(String title, Set<Author> authors, String dateOfPublication, Set<Genre> genres,
+                Publisher publisher, String isbn) {
         this.title = title;
         this.authors = authors;
         this.dateOfPublication = Date.valueOf(dateOfPublication);
         this.genres = genres;
+        this.publisher = publisher;
         this.isbn = isbn;
     }
-
 
     public Long getId() {
         return id;
