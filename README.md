@@ -24,7 +24,7 @@ Response -> Array of Book Objects
         "authors": [
         {
         "id": 1,
-        "name": "Zolly Gallyon"
+        "publisher": "Zolly Gallyon"
         }
         ],
         "dateOfPublication": "24-07-2012",
@@ -49,7 +49,7 @@ Example:
       "title": "Osmosis (Osmose)",
       "authors": ["Evania Rollett", "testAuthor1"],
       "genres": ["Comedy", "Drama", "Romance"],
-      "publishers": "Thoughtbridge",
+      "publisher": "Thoughtbridge",
       "dateOfPublication": "2007-03-08",
       "isbn": "168923674-4"
     }
