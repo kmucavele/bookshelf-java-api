@@ -1,6 +1,7 @@
 package com.enzubis.bookshelf_spring.author;
 
 import com.enzubis.bookshelf_spring.book.Book;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class Author {
 
     private String name;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "authors")
     private List<Book> books = new ArrayList<>();
 

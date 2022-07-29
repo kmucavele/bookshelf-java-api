@@ -15,7 +15,7 @@ public class PublisherService {
         this.publisherRepository = publisherRepository;
     }
 
-    public Publisher addPublisherId(Publisher publisher){
+/*    public Publisher addPublisherId(Publisher publisher){
         Optional<Publisher> publisherOptional = publisherRepository.findPublisherByPublisher(publisher);
 
         if(publisherOptional.isPresent()){
@@ -24,5 +24,5 @@ public class PublisherService {
 
         Publisher newPublisher = new Publisher(publisher.getName());
         return publisherRepository.save(newPublisher);
-    }
+    }*/
 }
