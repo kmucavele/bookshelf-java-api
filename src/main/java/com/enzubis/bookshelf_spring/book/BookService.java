@@ -36,8 +36,8 @@ public class BookService {
             throw new IllegalStateException("Book " + book.getTitle() + " already exists!");
         };
 
-       // book.setPublisher(publisherService.addPublisherId(book.getPublisher()));
-        //book.setGenres();
-        bookRepository.save(book);
+       book.setPublisher(publisherService.addPublisher(book.getPublisher()));
+       //book.setGenres();
+       bookRepository.save(book);
     }
 }
