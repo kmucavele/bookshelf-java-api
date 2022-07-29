@@ -41,11 +41,11 @@ public class User {
     }
 
 
-    @Override
+/*    @Override
     public String toString() {
         return "User{" +
                 "uuid='" + uuid + '\'' +
                 ", books=" + books +
                 '}';
-    }
+    }*/
 }
