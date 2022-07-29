@@ -14,11 +14,14 @@ public class BookController {
 
     private final BookshelfServices bookshelfServices;
     private final UserService userService;
+    private final BookService bookService;
+
 
     @Autowired
-    public BookController(BookshelfServices bookshelfServices, UserService userService) {
+    public BookController(BookshelfServices bookshelfServices, UserService userService, BookService bookService) {
         this.bookshelfServices = bookshelfServices;
         this.userService = userService;
+        this.bookService = bookService;
     }
 
     @GetMapping()
@@ -32,9 +35,11 @@ public class BookController {
             @RequestBody Book book,
             @PathVariable("userId") String userId
     ) {
-        System.out.println(book.getGenres());
         User user = userService.getUserByUUID(userId);
-        System.out.println(user.getUuid());
-        //bookshelfServices.addBookToUser(user, book);
+        System.out.println(user);
+        System.out.println(book);
+        bookService.addBook(book);
+        bookshelfServices.addBookToUser(user, book);
+
     }
 }
