@@ -51,4 +51,13 @@ public class Author {
     public void setBooks(List<Book> books) {
         this.books.addAll(books);
     }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", books=" + books +
+                '}';
+    }
 }
