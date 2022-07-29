@@ -14,13 +14,9 @@ public class Publisher {
     private Long id;
 
     @Column(name = "publisher")
-    private String name;
+    private String publisher;
 
-/*    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "book_publishers",
-            joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "publisher_id", referencedColumnName = "id")
-    )*/
+
     @OneToMany(mappedBy = "publisher")
     private List<Book> publishedBooks = new ArrayList<>();
 
@@ -28,16 +24,16 @@ public class Publisher {
     public Publisher() {
     }
 
-    public Publisher(String name) {
-        this.name = name;
+    public Publisher(String publisher) {
+        this.publisher = publisher;
     }
 
     public String getPublisher() {
-        return name;
+        return publisher;
     }
 
     public void setPublisher(String publisher) {
-        this.name = publisher;
+        this.publisher = publisher;
     }
 
     public Long getId() {
@@ -48,13 +44,6 @@ public class Publisher {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public List<Book> getPublishedBooks() {
         return publishedBooks;
@@ -68,7 +57,7 @@ public class Publisher {
     public String toString() {
         return "Publisher{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", publisher='" + publisher + '\'' +
                 ", publishedBooks=" + publishedBooks +
                 '}';
     }
