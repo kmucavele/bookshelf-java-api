@@ -3,11 +3,14 @@ package com.enzubis.bookshelf_spring.book;
 import com.enzubis.bookshelf_spring.author.Author;
 import com.enzubis.bookshelf_spring.book.book_properties.genre.Genre;
 import com.enzubis.bookshelf_spring.book.book_properties.publisher.Publisher;
+import com.enzubis.bookshelf_spring.bookshelf.Bookshelf;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -37,8 +40,12 @@ public class Book {
     @OneToMany(mappedBy = "book")
     private Set<Genre> genres = new HashSet<>();
 
-    @ManyToMany(mappedBy = "books")
-    private Set<Publisher> publishers = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "publisher_id")
+    private Publisher publisher;
+
+    @OneToMany(mappedBy = "book_id")
+    private List<Bookshelf> bookshelves = new ArrayList<>();
 
     @Column(columnDefinition = "VARCHAR(13)", unique = true)
     private String isbn;
@@ -47,7 +54,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, Set<Author> authors, String dateOfPublication, Set<Genre> genres, Set<Publisher> publishers,
+    public Book(String title, Set<Author> authors, String dateOfPublication, Set<Genre> genres, Set<Publisher> publisher,
                 String isbn) {
         this.title = title;
         this.authors = authors;
@@ -81,12 +88,12 @@ public class Book {
         this.authors.addAll(authors);
     }
 
-    public Set<Publisher> getPublishers() {
-        return publishers;
+    public Publisher getPublisher() {
+        return publisher;
     }
 
-    public void setPublishers(Set<Publisher> publishers) {
-        this.publishers = publishers;
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 
     public Set<Genre> getGenres() {
@@ -125,7 +132,7 @@ public class Book {
                 ", authors=" + authors +
                 ", dateOfPublication=" + dateOfPublication +
                 ", genres=" + genres +
-                ", publishers=" + publishers +
+                ", publisher=" + publisher +
                 ", isbn='" + isbn + '\'' +
                 '}';
     }
