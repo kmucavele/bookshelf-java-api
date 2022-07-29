@@ -39,7 +39,7 @@ public class BookshelfServices {
     public void addBookToUser(User user, Book book) {
         Bookshelf bookshelf = new Bookshelf();
         bookshelf.setUser(user);
-        bookshelf.setBook(book);
+        bookshelf.setBook_id(book);
         bookshelfRepository.save(bookshelf);
     }
 
