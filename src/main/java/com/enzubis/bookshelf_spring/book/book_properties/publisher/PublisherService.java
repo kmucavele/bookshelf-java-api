@@ -15,14 +15,14 @@ public class PublisherService {
         this.publisherRepository = publisherRepository;
     }
 
-/*    public Publisher addPublisherId(Publisher publisher){
-        Optional<Publisher> publisherOptional = publisherRepository.findPublisherByPublisher(publisher);
+    public Publisher addPublisher(Publisher publisher){
+        Optional<Publisher> publisherOptional = publisherRepository.findPublisherByPublisher(publisher.getPublisher());
 
         if(publisherOptional.isPresent()){
             return publisherOptional.get();
         }
 
-        Publisher newPublisher = new Publisher(publisher.getName());
+        Publisher newPublisher = new Publisher(publisher.getPublisher());
         return publisherRepository.save(newPublisher);
-    }*/
+    }
 }
