@@ -38,8 +38,7 @@ public class BookController {
         User user = userService.getUserByUUID(userId);
         System.out.println(user);
         System.out.println(book);
-        bookService.addBook(book);
-        bookshelfServices.addBookToUser(user, book);
-
+        Book addedBook = bookService.addBook(book);
+        bookshelfServices.addBookToUser(user, addedBook);
     }
 }
