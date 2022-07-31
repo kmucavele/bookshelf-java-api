@@ -1,4 +1,4 @@
-package com.enzubis.bookshelf_spring.bookshelf;
+package com.enzubis.bookshelf_spring.bookshelf_entry;
 
 import com.enzubis.bookshelf_spring.author.Author;
 import com.enzubis.bookshelf_spring.book.Book;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Set;
 
 @Configuration
-public class BookshelfConfig {
+public class BookshelfEntryConfig {
 
     @Bean
     CommandLineRunner commandLineRunner(UserRepository userRepository, BookRepository bookRepository) {

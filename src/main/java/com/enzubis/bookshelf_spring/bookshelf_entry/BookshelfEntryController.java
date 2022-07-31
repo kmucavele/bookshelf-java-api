@@ -1,4 +1,4 @@
-package com.enzubis.bookshelf_spring.bookshelf;
+package com.enzubis.bookshelf_spring.bookshelf_entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "api/bookshelf")
-public class BookshelfController {
+public class BookshelfEntryController {
 
-    private final BookshelfServices bookshelfServices;
+    private final BookshelfEntryServices bookshelfEntryServices;
 
     @Autowired
-    public BookshelfController(BookshelfServices bookshelfServices) {
-        this.bookshelfServices = bookshelfServices;
+    public BookshelfEntryController(BookshelfEntryServices bookshelfEntryServices) {
+        this.bookshelfEntryServices = bookshelfEntryServices;
     }
 
 

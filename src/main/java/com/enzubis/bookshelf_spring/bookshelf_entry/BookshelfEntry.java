@@ -1,19 +1,16 @@
-package com.enzubis.bookshelf_spring.bookshelf;
+package com.enzubis.bookshelf_spring.bookshelf_entry;
 
 import com.enzubis.bookshelf_spring.book.Book;
 import com.enzubis.bookshelf_spring.user.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "bookshelf")
-public class Bookshelf {
+@Table(name = "bookshelf_entry")
+public class BookshelfEntry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
 
     @ManyToOne
     @JoinColumn(name = "user_uuid")
@@ -31,7 +28,7 @@ public class Bookshelf {
     private boolean onWishlist;
 
 
-    public Bookshelf() {
+    public BookshelfEntry() {
     }
 
     public Long getId() {

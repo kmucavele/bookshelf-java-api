@@ -1,6 +1,6 @@
 package com.enzubis.bookshelf_spring.user;
 
-import com.enzubis.bookshelf_spring.bookshelf.Bookshelf;
+import com.enzubis.bookshelf_spring.bookshelf_entry.BookshelfEntry;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -15,7 +15,7 @@ public class User {
     private String uuid;
 
     @OneToMany(mappedBy = "user")
-    private Set<Bookshelf> books = new HashSet<>();
+    private Set<BookshelfEntry> books = new HashSet<>();
 
     public User() {
     }
@@ -32,11 +32,11 @@ public class User {
         this.uuid = uuid;
     }
 
-    public Set<Bookshelf> getBooks() {
+    public Set<BookshelfEntry> getBooks() {
         return books;
     }
 
-    public void setBooks(Set<Bookshelf> books) {
+    public void setBooks(Set<BookshelfEntry> books) {
         this.books = books;
     }
 

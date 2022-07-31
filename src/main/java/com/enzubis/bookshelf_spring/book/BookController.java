@@ -1,6 +1,6 @@
 package com.enzubis.bookshelf_spring.book;
 
-import com.enzubis.bookshelf_spring.bookshelf.BookshelfServices;
+import com.enzubis.bookshelf_spring.bookshelf_entry.BookshelfEntryServices;
 import com.enzubis.bookshelf_spring.user.User;
 import com.enzubis.bookshelf_spring.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,21 +12,21 @@ import java.util.List;
 @RequestMapping(path = "api/books")
 public class BookController {
 
-    private final BookshelfServices bookshelfServices;
+    private final BookshelfEntryServices bookshelfEntryServices;
     private final UserService userService;
     private final BookService bookService;
 
 
     @Autowired
-    public BookController(BookshelfServices bookshelfServices, UserService userService, BookService bookService) {
-        this.bookshelfServices = bookshelfServices;
+    public BookController(BookshelfEntryServices bookshelfEntryServices, UserService userService, BookService bookService) {
+        this.bookshelfEntryServices = bookshelfEntryServices;
         this.userService = userService;
         this.bookService = bookService;
     }
 
     @GetMapping()
     public List<Book> getBooks() {
-        return bookshelfServices.getBooks();
+        return bookshelfEntryServices.getBooks();
     }
 
 
@@ -39,6 +39,6 @@ public class BookController {
         System.out.println(user);
         System.out.println(book);
         Book addedBook = bookService.addBook(book);
-        bookshelfServices.addBookToUser(user, addedBook);
+        bookshelfEntryServices.addBookToUser(user, addedBook);
     }
 }

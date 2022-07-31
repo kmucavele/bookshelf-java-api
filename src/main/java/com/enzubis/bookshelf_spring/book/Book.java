@@ -3,7 +3,7 @@ package com.enzubis.bookshelf_spring.book;
 import com.enzubis.bookshelf_spring.author.Author;
 import com.enzubis.bookshelf_spring.book.book_properties.genre.Genre;
 import com.enzubis.bookshelf_spring.book.book_properties.publisher.Publisher;
-import com.enzubis.bookshelf_spring.bookshelf.Bookshelf;
+import com.enzubis.bookshelf_spring.bookshelf_entry.BookshelfEntry;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
@@ -45,7 +45,7 @@ public class Book {
     private Publisher publisher;
 
     @OneToMany(mappedBy = "book_id")
-    private List<Bookshelf> bookshelves = new ArrayList<>();
+    private final List<BookshelfEntry> bookshelves = new ArrayList<>();
 
     @Column(columnDefinition = "VARCHAR(13)", unique = true)
     private String isbn;
