@@ -3,7 +3,9 @@ package com.enzubis.bookshelf_spring.book.book_properties.genre;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface GenreRepository extends JpaRepository<Genre, Long> {
-    Genre findGenreByGenre(String genre);
+    Optional <Genre> findGenreByGenre(String genre);
 }
