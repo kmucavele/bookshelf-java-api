@@ -1,4 +1,5 @@
 package com.enzubis.bookshelf_spring.book.book_properties.genre;
+import com.enzubis.bookshelf_spring.book.Book;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -13,10 +14,10 @@ public class GenreService {
         this.genreRepository = genreRepository;
     }
 
-    public Set<Genre> addGenres(Set<Genre> genre){
+    public Set<Genre> addGenres(Book book){
+        Set<Genre> bookGenre = book.getGenres();
         Set<Genre> assignSet = new HashSet<>();
-
-        genre.forEach(genreElem -> {
+        bookGenre.forEach(genreElem -> {
             Optional<Genre> genreOptional = genreRepository.findGenreByGenre(genreElem.getGenre());
 
             if(genreOptional.isPresent()){

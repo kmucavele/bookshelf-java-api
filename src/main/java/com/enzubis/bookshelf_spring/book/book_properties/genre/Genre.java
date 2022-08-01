@@ -4,6 +4,7 @@ import com.enzubis.bookshelf_spring.book.Book;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "genre")
@@ -15,9 +16,9 @@ public class Genre {
     @Column(name = "genre")
     private String genre;
 
-    @ManyToOne
-    @JoinColumn(name = "book_id")
-    private Book book;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "genres")
+    private Set<Book> books;
 
     public Genre() {
     }
@@ -42,12 +43,12 @@ public class Genre {
         this.genre = genre;
     }
 
-    public Book getBook() {
-        return book;
+    public Set<Book> getBooks() {
+        return books;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     @Override
@@ -55,7 +56,7 @@ public class Genre {
         return "Genre{" +
                 "id=" + id +
                 ", genre='" + genre + '\'' +
-                ", book=" + book +
+                /*", book=" + book +*/
                 '}';
     }
 }

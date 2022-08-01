@@ -38,11 +38,10 @@ public class BookService {
         if(bookOptional.isPresent()){
             System.out.println("Book " + book.getTitle() + " already exists and will be added to users bookshelf entries");
             return bookOptional.get();
-        };
+        }
 
        book.setPublisher(publisherService.addPublisher(book.getPublisher()));
-       book.setGenres(genreService.addGenres(book.getGenres()));
-
+       book.setGenres(genreService.addGenres(book));
        return bookRepository.save(book);
     }
 }
