@@ -2,6 +2,8 @@ package com.enzubis.bookshelf_spring.bookshelf_entry;
 
 import com.enzubis.bookshelf_spring.book.Book;
 import com.enzubis.bookshelf_spring.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 
@@ -9,16 +11,19 @@ import javax.persistence.*;
 @Table(name = "bookshelf_entry")
 public class BookshelfEntry {
     @Id
+    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "user_uuid")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "book_id")
-    private Book book_id;
+    @JsonProperty("book")
+    @JoinColumn(name = "isbn")
+    private Book isbn;
 
     // int(1 = not done, 2 = reading, 3 = done)
     @Column(name = "reading_status", columnDefinition = "integer default 0")
@@ -63,22 +68,11 @@ public class BookshelfEntry {
         this.user = user;
     }
 
-    public Book getBook_id() {
-        return book_id;
+    public Book getIsbn() {
+        return isbn;
     }
 
-    public void setBook_id(Book book_id) {
-        this.book_id = book_id;
+    public void setIsbn(Book isbn) {
+        this.isbn = isbn;
     }
-
-/*    @Override
-    public String toString() {
-        return "Bookshelf{" +
-                "id=" + id +
-                ", user=" + user +
-                ", book_id=" + book_id +
-                ", readingStatus=" + readingStatus +
-                ", onWishlist=" + onWishlist +
-                '}';
-    }*/
 }

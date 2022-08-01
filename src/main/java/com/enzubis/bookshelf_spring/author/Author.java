@@ -19,7 +19,7 @@ public class Author {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "authors")
-    private List<Book> books = new ArrayList<>();
+    private final List<Book> books = new ArrayList<>();
 
 
     public Author() {
