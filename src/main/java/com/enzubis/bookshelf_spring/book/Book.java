@@ -3,14 +3,12 @@ package com.enzubis.bookshelf_spring.book;
 import com.enzubis.bookshelf_spring.author.Author;
 import com.enzubis.bookshelf_spring.book.book_properties.genre.Genre;
 import com.enzubis.bookshelf_spring.book.book_properties.publisher.Publisher;
-import com.enzubis.bookshelf_spring.bookshelf_entry.BookshelfEntry;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -18,8 +16,8 @@ import java.util.Set;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(columnDefinition = "VARCHAR(13)", unique = true)
+    private String isbn;
 
     @Column(name = "title")
     private String title;
@@ -27,7 +25,7 @@ public class Book {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "book_authors",
-            joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
+            joinColumns = @JoinColumn(name = "isbn", referencedColumnName = "isbn"),
             inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id")
     )
     private Set<Author> authors = new HashSet<>();
@@ -37,40 +35,31 @@ public class Book {
     @Column(name = "date_of_publication", columnDefinition = "DATE")
     private Date dateOfPublication;
 
-    @OneToMany(mappedBy = "book")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "book_genres",
+            joinColumns = @JoinColumn(name = "isbn", referencedColumnName = "isbn"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id", referencedColumnName = "id")
+    )
     private Set<Genre> genres = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
-    @OneToMany(mappedBy = "book_id")
-    private final List<BookshelfEntry> bookshelves = new ArrayList<>();
-
-    @Column(columnDefinition = "VARCHAR(13)", unique = true)
-    private String isbn;
-
 
     public Book() {
     }
 
-    public Book(String title, Set<Author> authors, String dateOfPublication, Set<Genre> genres,
-                Publisher publisher, String isbn) {
+    public Book(String isbn, String title, Set<Author> authors, String dateOfPublication, Set<Genre> genres, Publisher publisher) {
+        this.isbn = isbn;
         this.title = title;
         this.authors = authors;
-        this.dateOfPublication = Date.valueOf(dateOfPublication);
+        this.dateOfPublication =  Date.valueOf(dateOfPublication);
         this.genres = genres;
         this.publisher = publisher;
-        this.isbn = isbn;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
@@ -120,14 +109,9 @@ public class Book {
         this.dateOfPublication = Date.valueOf(dateOfPublication);
     }
 
-    public void setDateOfPublication(Date dateOfPublication) {
-        this.dateOfPublication = dateOfPublication;
-    }
-
     @Override
     public String toString() {
         return "Book{" +
-                "id=" + id +
                 ", title='" + title + '\'' +
                 ", authors=" + authors +
                 ", dateOfPublication=" + dateOfPublication +
