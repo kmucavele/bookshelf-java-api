@@ -54,13 +54,13 @@ public class BookshelfEntryConfig {
             Genre musical = new Genre("Musical");
 
 
-            Book thrive = new Book("Thrive", Set.of(zollyGallyon), "2012-07-25", Set.of(drama), macejkovicFeeney, "938323406-7");
+            Book thrive = new Book("938323406-7", "Thrive", Set.of(zollyGallyon), "2012-07-25", Set.of(drama), macejkovicFeeney);
 
-            Book amazonWomenOnTheMoon = new Book("Amazon Women on the Moon", Set.of(cathrynEthridge, estevanHackett), "1990-07-25", Set.of(horror, romance),
-                    mayertKoepp, "099315114-0");
+            Book amazonWomenOnTheMoon = new Book("099315114-0", "Amazon Women on the Moon", Set.of(cathrynEthridge, estevanHackett), "1990-07-25", Set.of(horror, romance),
+                    mayertKoepp);
 
-            Book cornIsland = new Book("Corn Island", Set.of(farahBlaase, estevanHackett, kathyeLindmark), "2004-05-07", Set.of(comedy, drama, musical),
-                    friesenAndSons, "696409388-5");
+            Book cornIsland = new Book("696409388-5", "Corn Island", Set.of(farahBlaase, estevanHackett, kathyeLindmark), "2004-05-07", Set.of(comedy, drama, musical),
+                    friesenAndSons);
 
             // insert test users into users table
             userRepository.saveAll(
