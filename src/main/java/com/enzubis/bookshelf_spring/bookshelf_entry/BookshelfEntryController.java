@@ -25,22 +25,29 @@ public class BookshelfEntryController {
         this.bookService = bookService;
     }
 
-
     @GetMapping(path = "{userId}")
     public List<BookshelfEntry> getUserBooks(@PathVariable("userId") String userId) {
         return bookshelfEntryServices.getUserBooks(userId);
     }
 
-
     @PostMapping(path = "/{userId}/add", consumes = "application/json")
-    public void addBook(
+    public void addBookEntry(
             @RequestBody Book book,
-            @PathVariable("userId") String userId
-    ) {
+            @PathVariable("userId") String userId) {
         User user = userService.getUserByUUID(userId);
         System.out.println(user);
         System.out.println(book);
         Book addedBook = bookService.addBook(book);
         bookshelfEntryServices.addBookToUser(user, addedBook);
     }
+
+    @DeleteMapping(path = "/{userId}/{isbn}/delete")
+    public void deleteBookEntry(@PathVariable("userId") String userId,
+                                @PathVariable("isbn") String isbn){
+        User user = userService.getUserByUUID(userId);
+        Book book = bookService.getBookByIsbn(isbn);
+        bookshelfEntryServices.deleteBookEntry(user, book);
+    }
+
+
 }

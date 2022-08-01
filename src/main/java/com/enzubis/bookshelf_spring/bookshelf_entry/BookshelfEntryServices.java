@@ -39,4 +39,15 @@ public class BookshelfEntryServices {
         bookshelfEntry.setIsbn(book);
         bookshelfEntryRepository.save(bookshelfEntry);
     }
+
+    public void deleteBookEntry(User user, Book book) {
+        Optional<BookshelfEntry> bookshelfEntryOptional = bookshelfEntryRepository
+                .findBookshelfEntryByUserAndIsbn(user, book);
+
+        if(bookshelfEntryOptional.isEmpty()){
+            throw new IllegalStateException("No entry for that user and book found");
+        }
+
+        bookshelfEntryRepository.delete(bookshelfEntryOptional.get());
+    }
 }

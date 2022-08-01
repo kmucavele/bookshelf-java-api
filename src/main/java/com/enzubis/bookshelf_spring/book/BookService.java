@@ -44,4 +44,14 @@ public class BookService {
        book.setGenres(genreService.addGenres(book));
        return bookRepository.save(book);
     }
+
+    public Book getBookByIsbn(String isbn){
+        Optional<Book> bookOptional = bookRepository.findByIsbn(isbn);
+
+        if(bookOptional.isEmpty()){
+            throw new IllegalStateException("Book does not exist");
+        }
+
+        return bookOptional.get();
+    }
 }
