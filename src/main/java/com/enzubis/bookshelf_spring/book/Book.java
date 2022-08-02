@@ -4,7 +4,7 @@ import com.enzubis.bookshelf_spring.author.Author;
 import com.enzubis.bookshelf_spring.book.book_properties.genre.Genre;
 import com.enzubis.bookshelf_spring.book.book_properties.publisher.Publisher;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonGetter;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -43,7 +43,7 @@ public class Book {
     )
     private Set<Genre> genres = new HashSet<>();
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
@@ -73,6 +73,13 @@ public class Book {
         return authors;
     }
 
+    @JsonGetter("authors")
+    public Set<String> getJsonAuthors() {
+        Set<String> jsonAutors = new HashSet<>();
+        authors.forEach(author -> jsonAutors.add(author.getName()));
+        return jsonAutors;
+    }
+
     public void setAuthors(Set<Author> authors) {
         this.authors.addAll(authors);
     }
@@ -81,12 +88,24 @@ public class Book {
         return publisher;
     }
 
+    @JsonGetter("publisher")
+    public String getPublisherName() {
+        return publisher.getPublisher();
+    }
+
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
     }
 
     public Set<Genre> getGenres() {
         return genres;
+    }
+
+    @JsonGetter("genres")
+    public Set<String> getJsonGenres() {
+        Set<String> jsonGenres = new HashSet<>();
+        genres.forEach(genre -> jsonGenres.add(genre.getGenre()));
+        return jsonGenres;
     }
 
     public void setGenres(Set<Genre> genres) {
