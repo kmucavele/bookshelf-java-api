@@ -2,6 +2,8 @@ package com.enzubis.bookshelf_spring.book.book_properties.publisher;
 
 import com.enzubis.bookshelf_spring.book.Book;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,11 +19,6 @@ public class Publisher {
 
     @Column(name = "publisher")
     private String publisher;
-
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "publisher")
-    private List<Book> publishedBooks = new ArrayList<>();
 
 
     public Publisher() {
@@ -47,21 +44,11 @@ public class Publisher {
         this.id = id;
     }
 
-
-    public List<Book> getPublishedBooks() {
-        return publishedBooks;
-    }
-
-    public void setPublishedBooks(List<Book> publishedBooks) {
-        this.publishedBooks = publishedBooks;
-    }
-
     @Override
     public String toString() {
         return "Publisher{" +
                 "id=" + id +
                 ", publisher='" + publisher + '\'' +
-                ", publishedBooks=" + publishedBooks +
                 '}';
     }
 }
