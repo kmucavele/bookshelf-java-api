@@ -13,7 +13,7 @@
    * [Api Doc](http://localhost:8080/swagger-ui.html)
 
     
-The Book Model in the swagger doc are not correct. Use this book model instead (for POST & GET):
+The Book Model in the swagger doc is not correct. This book model should be used instead (for POST & GET):
 ````
 {
   "authors": ["string"],
