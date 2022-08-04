@@ -5,6 +5,7 @@ import com.enzubis.bookshelf_spring.book.book_properties.genre.Genre;
 import com.enzubis.bookshelf_spring.book.book_properties.publisher.Publisher;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -84,6 +85,10 @@ public class Book {
         this.authors.addAll(authors);
     }
 
+    @JsonSetter("authors")
+    public void setAuthorsJson(Set<String> authors){
+    }
+
     public Publisher getPublisher() {
         return publisher;
     }
@@ -92,6 +97,12 @@ public class Book {
     public String getPublisherName() {
         return publisher.getPublisher();
     }
+
+    @JsonSetter("publisher")
+    public void setPublisherName(String publisher) {
+        this.publisher.setPublisher(publisher);
+    }
+
 
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
@@ -110,6 +121,10 @@ public class Book {
 
     public void setGenres(Set<Genre> genres) {
         this.genres = genres;
+    }
+
+    @JsonSetter("genres")
+    public void setGenresJson(Set<String> genres) {
     }
 
     public String getIsbn() {
