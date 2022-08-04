@@ -84,10 +84,10 @@ public class Book {
     public void setAuthors(Set<Author> authors) {
         this.authors.addAll(authors);
     }
-
-    @JsonSetter("authors")
+/*
+    @JsonSetter("authorList")
     public void setAuthorsJson(Set<String> authors){
-    }
+    }*/
 
     public Publisher getPublisher() {
         return publisher;
@@ -98,10 +98,10 @@ public class Book {
         return publisher.getPublisher();
     }
 
-    @JsonSetter("publisher")
+/*    @JsonSetter("publisher")
     public void setPublisherName(String publisher) {
         this.publisher.setPublisher(publisher);
-    }
+    }*/
 
 
     public void setPublisher(Publisher publisher) {
@@ -123,9 +123,9 @@ public class Book {
         this.genres = genres;
     }
 
-    @JsonSetter("genres")
+/*    @JsonSetter("genresList")
     public void setGenresJson(Set<String> genres) {
-    }
+    }*/
 
     public String getIsbn() {
         return isbn;
