@@ -4,6 +4,7 @@ import com.enzubis.bookshelf_spring.book.Book;
 import com.enzubis.bookshelf_spring.book.BookService;
 import com.enzubis.bookshelf_spring.user.User;
 import com.enzubis.bookshelf_spring.user.UserService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,14 +26,20 @@ public class BookshelfEntryController {
         this.bookService = bookService;
     }
 
-
     @GetMapping(path = "{userId}")
-
+    @ApiOperation(
+            value = "Returns the bookshelf entries of a user",
+            response = Book.class
+    )
     public List<BookshelfEntry> getUserBooks(@PathVariable("userId") String userId) {
         return bookshelfEntryServices.getUserBooks(userId);
     }
 
     @PostMapping(path = "/{userId}/add", consumes = "application/json")
+    @ApiOperation(
+            value = "Adds a new book to a user",
+            response = Book.class
+    )
 
     public void addBookEntry(
             @RequestBody Book book,
@@ -43,7 +50,6 @@ public class BookshelfEntryController {
         Book addedBook = bookService.addBook(book);
         bookshelfEntryServices.addBookToUser(user, addedBook);
     }
-
 
     @DeleteMapping(path = "/{userId}/{isbn}/delete")
     public void deleteBookEntry(@PathVariable("userId") String userId,
