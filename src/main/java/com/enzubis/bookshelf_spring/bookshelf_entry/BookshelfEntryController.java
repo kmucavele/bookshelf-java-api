@@ -6,6 +6,7 @@ import com.enzubis.bookshelf_spring.user.User;
 import com.enzubis.bookshelf_spring.user.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,7 +41,7 @@ public class BookshelfEntryController {
             value = "Adds a new book to a user",
             response = Book.class
     )
-
+    @ResponseStatus(HttpStatus.CREATED)
     public void addBookEntry(
             @RequestBody Book book,
             @PathVariable("userId") String userId) {

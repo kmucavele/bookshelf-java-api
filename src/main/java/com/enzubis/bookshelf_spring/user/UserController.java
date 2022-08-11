@@ -1,6 +1,7 @@
 package com.enzubis.bookshelf_spring.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class UserController {
     }
 
     @PostMapping(path = "/add")
+    @ResponseStatus(HttpStatus.CREATED)
     public void addUser(@RequestBody User user) {
         // TODO: Add User added Message + status code
         userService.addUser(user);
