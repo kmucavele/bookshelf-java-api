@@ -7,6 +7,7 @@ import com.enzubis.bookshelf_spring.user.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,7 +43,7 @@ public class BookshelfEntryController {
             response = Book.class
     )
     @ResponseStatus(HttpStatus.CREATED)
-    public void addBookEntry(
+    public ResponseEntity<String> addBookEntry(
             @RequestBody Book book,
             @PathVariable("userId") String userId) {
         User user = userService.getUserByUUID(userId);
@@ -50,13 +51,21 @@ public class BookshelfEntryController {
         System.out.println(book);
         Book addedBook = bookService.addBook(book);
         bookshelfEntryServices.addBookToUser(user, addedBook);
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("The Book " + book.getTitle() + "(isbn: " + book.getIsbn() +
+                        ") was added to the bookshelf of: " + userId + '.');
     }
 
     @DeleteMapping(path = "/{userId}/{isbn}/delete")
-    public void deleteBookEntry(@PathVariable("userId") String userId,
+    public ResponseEntity<String> deleteBookEntry(@PathVariable("userId") String userId,
                                 @PathVariable("isbn") String isbn) {
         User user = userService.getUserByUUID(userId);
         Book book = bookService.getBookByIsbn(isbn);
         bookshelfEntryServices.deleteBookEntry(user, book);
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body("The Book " + book.getTitle() + "(isbn: " + isbn +
+                        ") was removed from the bookshelf of: " + userId + '.');
     }
 }
