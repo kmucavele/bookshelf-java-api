@@ -43,7 +43,7 @@ public class Book {
     )
     private Set<Genre> genres = new HashSet<>();
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
