@@ -6,6 +6,7 @@ import com.enzubis.bookshelf_spring.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,5 +50,21 @@ public class BookshelfEntryServices {
         }
 
         bookshelfEntryRepository.delete(bookshelfEntryOptional.get());
+    }
+
+    @Transactional
+    public void updateBookshelfEntryOnWishlist(User user, Book book, boolean onWishlist) {
+        Optional<BookshelfEntry> bookshelfEntry = bookshelfEntryRepository
+                .findBookshelfEntryByUserAndIsbn(user, book);
+
+        bookshelfEntry.ifPresent(entry -> entry.setOnWishlist(onWishlist));
+    }
+
+    @Transactional
+    public void updateBookshelfEntryReadingStatus(User user, Book book, int readingStatus) {
+        Optional<BookshelfEntry> bookshelfEntry = bookshelfEntryRepository
+                .findBookshelfEntryByUserAndIsbn(user, book);
+
+        bookshelfEntry.ifPresent(entry -> entry.setReadingStatus(readingStatus));
     }
 }

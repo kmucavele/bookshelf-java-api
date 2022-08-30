@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/bookshelf")
@@ -67,5 +68,31 @@ public class BookshelfEntryController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body("The Book " + book.getTitle() + "(isbn: " + isbn +
                         ") was removed from the bookshelf of: " + userId + '.');
+    }
+
+    @PatchMapping(path = "{userId}/{isbn}")
+    public ResponseEntity<String> updateBookEntry(
+           @PathVariable("userId")  String userId,
+           @PathVariable("isbn")  String isbn,
+           @RequestParam(required = false) Optional<Boolean> wishlist,
+           @RequestParam(required = false) Optional<Integer> status
+    ) {
+
+        User user = userService.getUserByUUID(userId);
+        Book book = bookService.getBookByIsbn(isbn);
+
+        wishlist.ifPresent(wishlistUpdate -> bookshelfEntryServices
+                .updateBookshelfEntryOnWishlist(user, book, wishlistUpdate));
+
+        status.ifPresent(readingStatus -> bookshelfEntryServices
+                .updateBookshelfEntryReadingStatus(user, book, readingStatus));
+
+        if(wishlist.isEmpty() && status.isEmpty()){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("Please set an update value");
+        } else {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("Update was successful");
+        }
     }
 }

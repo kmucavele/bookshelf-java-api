@@ -68,9 +68,9 @@ public class BookshelfEntryConfig {
             );
 
             // insert test books into books table
-            bookRepository.saveAll(
+/*            bookRepository.saveAll(
                     List.of(thrive, amazonWomenOnTheMoon, cornIsland)
-            );
+            );*/
         };
     }
 }

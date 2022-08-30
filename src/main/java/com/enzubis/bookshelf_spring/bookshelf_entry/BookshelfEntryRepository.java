@@ -13,4 +13,6 @@ public interface BookshelfEntryRepository extends JpaRepository<BookshelfEntry, 
     Optional<BookshelfEntry> findBookshelfEntryByUserAndIsbn(User user, Book book);
 
     List<BookshelfEntry> findBookshelfEntriesByUser(User user);
+
+
 }
