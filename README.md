@@ -9,21 +9,31 @@
 
 ---
 
-#### Api Documentation with Swagger:
-   * [Api Doc](http://localhost:8080/swagger-ui.html)
+#### Api Documentation with Postman:
+   * [Api Doc](https://documenter.getpostman.com/view/22759795/VUxLxULx)
 
     
-The Book Model in the swagger doc is not correct. This book model should be used instead (for POST & GET):
-````
-{
-  "authors": ["string"],
-  "dateOfPublication": "string",
-  "genres": ["string"],
-  "isbn": "string",
-  "publisher": "string",
-  "title": "string"
-}
-````
+[//]: # (The Book Model in the swagger doc is not correct. This book model should be used instead &#40;for POST & GET&#41;:)
+
+[//]: # (````)
+
+[//]: # ({)
+
+[//]: # (  "authors": ["string"],)
+
+[//]: # (  "dateOfPublication": "string",)
+
+[//]: # (  "genres": ["string"],)
+
+[//]: # (  "isbn": "string",)
+
+[//]: # (  "publisher": "string",)
+
+[//]: # (  "title": "string")
+
+[//]: # (})
+
+[//]: # (````)
 
 ---
 

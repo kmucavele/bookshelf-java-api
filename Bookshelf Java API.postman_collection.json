@@ -1,0 +1,899 @@
+{
+	"info": {
+		"_postman_id": "8414fe7c-60e0-455a-91b7-f90bd16b0c95",
+		"name": "Bookshelf Java API",
+		"description": "``` markdown\nBookshelf Api - Save, modify or delete your bookshelf entries in a database\n\n```",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22759795"
+	},
+	"item": [
+		{
+			"name": "Get all users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "#### Get a list of all users"
+			},
+			"response": [
+				{
+					"name": "Get all users",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 11 Aug 2022 07:52:15 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"uuid\": \"009BVWKVgHb0ERn3edblbJgAXwI2\",\n        \"books\": []\n    },\n    {\n        \"uuid\": \"AwIfVh5nQge00jnfzxVtwL81tS42\",\n        \"books\": []\n    },\n    {\n        \"uuid\": \"BNPW5oKLRhXD2UG11EpEndBdBzy2\",\n        \"books\": []\n    },\n    {\n        \"uuid\": \"LuApbNIFD4RvdUFAakcAUBu2R6W2\",\n        \"books\": []\n    },\n    {\n        \"uuid\": \"pfdHKkSHvJf8pbHnb0OEXcCg2k4L\",\n        \"books\": []\n    },\n    {\n        \"uuid\": \"TzOF19jkvPUzEg5rWtrSHQ49Esg2\",\n        \"books\": [\n            {\n                \"readingStatus\": 0,\n                \"onWishlist\": false,\n                \"book\": {\n                    \"isbn\": \"168923674-4\",\n                    \"title\": \"Osmosis (Osmose)\",\n                    \"authors\": [\n                        \"testAuthor1\",\n                        \"Evania Rollett\"\n                    ],\n                    \"dateOfPublication\": \"07-03-2007\",\n                    \"genres\": [\n                        \"Drama\",\n                        \"Romance\",\n                        \"Comedy\"\n                    ],\n                    \"publisher\": \"Thoughtbridge\"\n                }\n            }\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Add new User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"uuid\": \"pfdHKkSHvJf8pbHnb0OEXcCg2k4L\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"add"
+					]
+				},
+				"description": "#### Adds a new user\n\n#### path: api/users/add"
+			},
+			"response": [
+				{
+					"name": "Add new User",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"uuid\": \"pfdHKkSHvJf8pbHnb0OEXcCg2k4L\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"add"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "60"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 11 Aug 2022 07:46:08 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "User with uuid: pfdHKkSHvJf8pbHnb0OEXcCg2k4L was registered."
+				},
+				{
+					"name": "Add already existing user",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"uuid\": \"pfdHKkSHvJf8pbHnb0OEXcCg2k4L\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"add"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 11 Aug 2022 07:46:15 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2022-08-11T07:46:15.750+00:00\",\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"User already exists!\",\n    \"path\": \"/api/users/add\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add new book to a users bookshelf",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Osmosis (Osmose)\",\n  \"authors\": [\"Evania Rollett\", \"testAuthor1\"],\n  \"genres\": [\"Comedy\", \"Drama\", \"Romance\"],\n  \"publisher\": \"Thoughtbridge\",\n  \"dateOfPublication\": \"2007-03-08\",\n  \"isbn\": \"168923674-4\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/bookshelf/TzOF19jkvPUzEg5rWtrSHQ49Esg2/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bookshelf",
+						"TzOF19jkvPUzEg5rWtrSHQ49Esg2",
+						"add"
+					]
+				},
+				"description": "#### Adds a new book to a users bookshelf\n\n#### path: api/bookshelf/{userId}/add"
+			},
+			"response": [
+				{
+					"name": "Add new book to a users bookshelf",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Osmosis (Osmose)\",\n  \"authors\": [\"Evania Rollett\", \"testAuthor1\"],\n  \"genres\": [\"Comedy\", \"Drama\", \"Romance\"],\n  \"publisher\": \"Thoughtbridge\",\n  \"dateOfPublication\": \"2007-03-08\",\n  \"isbn\": \"168923674-4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/bookshelf/TzOF19jkvPUzEg5rWtrSHQ49Esg2/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookshelf",
+								"TzOF19jkvPUzEg5rWtrSHQ49Esg2",
+								"add"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "105"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 11 Aug 2022 07:48:46 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "The Book Osmosis (Osmose)(isbn: 168923674-4) was added to the bookshelf of: TzOF19jkvPUzEg5rWtrSHQ49Esg2."
+				},
+				{
+					"name": "Add already existing book to a users bookshelf",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Osmosis (Osmose)\",\n  \"authors\": [\"Evania Rollett\", \"testAuthor1\"],\n  \"genres\": [\"Comedy\", \"Drama\", \"Romance\"],\n  \"publisher\": \"Thoughtbridge\",\n  \"dateOfPublication\": \"2007-03-08\",\n  \"isbn\": \"168923674-4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/bookshelf/TzOF19jkvPUzEg5rWtrSHQ49Esg2/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookshelf",
+								"TzOF19jkvPUzEg5rWtrSHQ49Esg2",
+								"add"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 11 Aug 2022 07:48:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2022-08-11T07:48:58.750+00:00\",\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"Book already exists in Bookshelf entries of mentioned user\",\n    \"path\": \"/api/bookshelf/TzOF19jkvPUzEg5rWtrSHQ49Esg2/add\"\n}"
+				},
+				{
+					"name": "Add new book to a users bookshelf, that is not registered",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Osmosis (Osmose)\",\n  \"authors\": [\"Evania Rollett\", \"testAuthor1\"],\n  \"genres\": [\"Comedy\", \"Drama\", \"Romance\"],\n  \"publisher\": \"Thoughtbridge\",\n  \"dateOfPublication\": \"2007-03-08\",\n  \"isbn\": \"168923674-4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/bookshelf/TzOF19jkvPUzEg5WtrSHQ49Esg2/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookshelf",
+								"TzOF19jkvPUzEg5WtrSHQ49Esg2",
+								"add"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 11 Aug 2022 07:50:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2022-08-11T07:50:46.744+00:00\",\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"User does not exist. Please register!\",\n    \"path\": \"/api/bookshelf/TzOF19jkvPUzEg5WtrSHQ49Esg2/add\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all bookshelf entries of a user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/bookshelf/TzOF19jkvPUzEg5rWtrSHQ49Esg2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bookshelf",
+						"TzOF19jkvPUzEg5rWtrSHQ49Esg2"
+					]
+				},
+				"description": "#### Get all books from a users bookshelf\n\n#### path: api/bookshelf/{userId}"
+			},
+			"response": [
+				{
+					"name": "Get all bookshelf entries of a user",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/bookshelf/TzOF19jkvPUzEg5rWtrSHQ49Esg2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookshelf",
+								"TzOF19jkvPUzEg5rWtrSHQ49Esg2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 11 Aug 2022 07:52:44 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"readingStatus\": 0,\n        \"onWishlist\": false,\n        \"book\": {\n            \"isbn\": \"168923674-4\",\n            \"title\": \"Osmosis (Osmose)\",\n            \"authors\": [\n                \"testAuthor1\",\n                \"Evania Rollett\"\n            ],\n            \"dateOfPublication\": \"07-03-2007\",\n            \"genres\": [\n                \"Drama\",\n                \"Romance\",\n                \"Comedy\"\n            ],\n            \"publisher\": \"Thoughtbridge\"\n        }\n    }\n]"
+				},
+				{
+					"name": "Get all bookshelf entries of a user, that is not registered",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/bookshelf/TzOF19jkvPUzEg5WtrSHQ49Esg2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookshelf",
+								"TzOF19jkvPUzEg5WtrSHQ49Esg2"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 11 Aug 2022 07:53:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2022-08-11T07:53:06.567+00:00\",\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"User does not exist. Please register!\",\n    \"path\": \"/api/bookshelf/TzOF19jkvPUzEg5WtrSHQ49Esg2\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete bookshelf entry of a user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/bookshelf/TzOF19jkvPUzEg5rWtrSHQ49Esg2/168923674-4/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bookshelf",
+						"TzOF19jkvPUzEg5rWtrSHQ49Esg2",
+						"168923674-4",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "#### Deletes a book from a users bookshelf\n\n#### path: api/bookshelf/{userId}/{isbn}/delete"
+			},
+			"response": [
+				{
+					"name": "Delete bookshelf entry of a user",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/bookshelf/TzOF19jkvPUzEg5rWtrSHQ49Esg2/168923674-4/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookshelf",
+								"TzOF19jkvPUzEg5rWtrSHQ49Esg2",
+								"168923674-4",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "109"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 11 Aug 2022 07:53:56 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "The Book Osmosis (Osmose)(isbn: 168923674-4) was removed from the bookshelf of: TzOF19jkvPUzEg5rWtrSHQ49Esg2."
+				},
+				{
+					"name": "Delete an already deleted bookshelf entry of a user",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/bookshelf/TzOF19jkvPUzEg5rWtrSHQ49Esg2/168923674-4/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookshelf",
+								"TzOF19jkvPUzEg5rWtrSHQ49Esg2",
+								"168923674-4",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 11 Aug 2022 07:54:07 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2022-08-11T07:54:07.263+00:00\",\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"No entry for that user and book found\",\n    \"path\": \"/api/bookshelf/TzOF19jkvPUzEg5rWtrSHQ49Esg2/168923674-4/delete\"\n}"
+				},
+				{
+					"name": "Delete bookshelf entry of a user that not exists",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/bookshelf/TzOF19jkvUzEg5rWtrSHQ49Esg2/168923674-4/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookshelf",
+								"TzOF19jkvUzEg5rWtrSHQ49Esg2",
+								"168923674-4",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 11 Aug 2022 07:54:52 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2022-08-11T07:54:52.237+00:00\",\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"User does not exist. Please register!\",\n    \"path\": \"/api/bookshelf/TzOF19jkvUzEg5rWtrSHQ49Esg2/168923674-4/delete\"\n}"
+				},
+				{
+					"name": "Delete bookshelf entry of a user, where the book does not exist",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/bookshelf/TzOF19jkvPUzEg5rWtrSHQ49Esg2/16893674-4/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookshelf",
+								"TzOF19jkvPUzEg5rWtrSHQ49Esg2",
+								"16893674-4",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 11 Aug 2022 07:55:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2022-08-11T07:55:48.661+00:00\",\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"Book does not exist\",\n    \"path\": \"/api/bookshelf/TzOF19jkvPUzEg5rWtrSHQ49Esg2/16893674-4/delete\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/books",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all books",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 30 Aug 2022 09:13:19 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"isbn\": \"168923674-4\",\n        \"title\": \"Osmosis (Osmose)\",\n        \"authors\": [\n            \"testAuthor1\",\n            \"Evania Rollett\"\n        ],\n        \"dateOfPublication\": \"07-03-2007\",\n        \"genres\": [\n            \"Drama\",\n            \"Romance\",\n            \"Comedy\"\n        ],\n        \"publisher\": \"Thoughtbridge\"\n    }\n]"
+				}
+			]
+		}
+	]
+}
