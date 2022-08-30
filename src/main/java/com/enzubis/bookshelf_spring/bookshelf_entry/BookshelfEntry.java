@@ -29,7 +29,7 @@ public class BookshelfEntry {
     @Column(name = "reading_status", columnDefinition = "integer default 0")
     private int readingStatus;
 
-    @Column(name = "on_wishlist", columnDefinition = "boolean default false")
+    @Column(name = "on_wishlist", columnDefinition = "boolean default true")
     private boolean onWishlist;
 
 
