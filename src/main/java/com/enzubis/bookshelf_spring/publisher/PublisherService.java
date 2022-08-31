@@ -15,10 +15,10 @@ public class PublisherService {
         this.publisherRepository = publisherRepository;
     }
 
-    public Publisher addPublisher(Publisher publisher){
+    public Publisher addPublisher(Publisher publisher) {
         Optional<Publisher> publisherOptional = publisherRepository.findPublisherByPublisher(publisher.getPublisher());
 
-        if(publisherOptional.isPresent()){
+        if (publisherOptional.isPresent()) {
             return publisherOptional.get();
         }
 

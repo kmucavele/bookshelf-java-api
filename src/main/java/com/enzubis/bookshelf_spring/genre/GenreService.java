@@ -1,4 +1,5 @@
 package com.enzubis.bookshelf_spring.genre;
+
 import com.enzubis.bookshelf_spring.book.Book;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +15,13 @@ public class GenreService {
         this.genreRepository = genreRepository;
     }
 
-    public Set<Genre> addGenres(Book book){
+    public Set<Genre> addGenres(Book book) {
         Set<Genre> bookGenre = book.getGenres();
         Set<Genre> assignSet = new HashSet<>();
         bookGenre.forEach(genreElem -> {
             Optional<Genre> genreOptional = genreRepository.findGenreByGenre(genreElem.getGenre());
 
-            if(genreOptional.isPresent()){
+            if (genreOptional.isPresent()) {
                 assignSet.add(genreOptional.get());
             } else {
                 Genre newGenre = new Genre(genreElem.getGenre());

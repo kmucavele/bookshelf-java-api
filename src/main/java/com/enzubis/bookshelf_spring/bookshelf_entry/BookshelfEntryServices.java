@@ -45,7 +45,7 @@ public class BookshelfEntryServices {
         Optional<BookshelfEntry> bookshelfEntryOptional = bookshelfEntryRepository
                 .findBookshelfEntryByUserAndIsbn(user, book);
 
-        if(bookshelfEntryOptional.isEmpty()){
+        if (bookshelfEntryOptional.isEmpty()) {
             throw new IllegalStateException("No entry for that user and book found");
         }
 

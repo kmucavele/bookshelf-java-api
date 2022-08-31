@@ -60,7 +60,7 @@ public class BookshelfEntryController {
 
     @DeleteMapping(path = "/{userId}/{isbn}/delete")
     public ResponseEntity<String> deleteBookEntry(@PathVariable("userId") String userId,
-                                @PathVariable("isbn") String isbn) {
+                                                  @PathVariable("isbn") String isbn) {
         User user = userService.getUserByUUID(userId);
         Book book = bookService.getBookByIsbn(isbn);
         bookshelfEntryServices.deleteBookEntry(user, book);
@@ -72,10 +72,10 @@ public class BookshelfEntryController {
 
     @PatchMapping(path = "{userId}/{isbn}")
     public ResponseEntity<String> updateBookEntry(
-           @PathVariable("userId")  String userId,
-           @PathVariable("isbn")  String isbn,
-           @RequestParam(required = false) Optional<Boolean> wishlist,
-           @RequestParam(required = false) Optional<Integer> status
+            @PathVariable("userId") String userId,
+            @PathVariable("isbn") String isbn,
+            @RequestParam(required = false) Optional<Boolean> wishlist,
+            @RequestParam(required = false) Optional<Integer> status
     ) {
 
         User user = userService.getUserByUUID(userId);
@@ -87,7 +87,7 @@ public class BookshelfEntryController {
         status.ifPresent(readingStatus -> bookshelfEntryServices
                 .updateBookshelfEntryReadingStatus(user, book, readingStatus));
 
-        if(wishlist.isEmpty() && status.isEmpty()){
+        if (wishlist.isEmpty() && status.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body("Please set an update value");
         } else {

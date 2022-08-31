@@ -32,23 +32,23 @@ public class BookService {
         book.getAuthors().add(author);
     }
 
-    public Book addBook(Book book){
+    public Book addBook(Book book) {
         Optional<Book> bookOptional = bookRepository.findByIsbn(book.getIsbn());
 
-        if(bookOptional.isPresent()){
+        if (bookOptional.isPresent()) {
             System.out.println("Book " + book.getTitle() + " already exists and will be added to users bookshelf entries");
             return bookOptional.get();
         }
 
-       book.setPublisher(publisherService.addPublisher(book.getPublisher()));
-       book.setGenres(genreService.addGenres(book));
-       return bookRepository.save(book);
+        book.setPublisher(publisherService.addPublisher(book.getPublisher()));
+        book.setGenres(genreService.addGenres(book));
+        return bookRepository.save(book);
     }
 
-    public Book getBookByIsbn(String isbn){
+    public Book getBookByIsbn(String isbn) {
         Optional<Book> bookOptional = bookRepository.findByIsbn(isbn);
 
-        if(bookOptional.isEmpty()){
+        if (bookOptional.isEmpty()) {
             throw new IllegalStateException("Book does not exist");
         }
 
