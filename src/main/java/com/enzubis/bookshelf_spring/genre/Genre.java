@@ -1,4 +1,4 @@
-package com.enzubis.bookshelf_spring.book.book_properties.genre;
+package com.enzubis.bookshelf_spring.genre;
 
 import com.enzubis.bookshelf_spring.book.Book;
 import com.fasterxml.jackson.annotation.JsonIgnore;

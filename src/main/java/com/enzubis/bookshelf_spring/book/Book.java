@@ -1,8 +1,8 @@
 package com.enzubis.bookshelf_spring.book;
 
 import com.enzubis.bookshelf_spring.author.Author;
-import com.enzubis.bookshelf_spring.book.book_properties.genre.Genre;
-import com.enzubis.bookshelf_spring.book.book_properties.publisher.Publisher;
+import com.enzubis.bookshelf_spring.genre.Genre;
+import com.enzubis.bookshelf_spring.publisher.Publisher;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonGetter;
 

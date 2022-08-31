@@ -1,13 +1,8 @@
-package com.enzubis.bookshelf_spring.book.book_properties.publisher;
+package com.enzubis.bookshelf_spring.publisher;
 
-import com.enzubis.bookshelf_spring.book.Book;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "publisher")

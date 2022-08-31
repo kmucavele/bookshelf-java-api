@@ -1,4 +1,4 @@
-package com.enzubis.bookshelf_spring.book.book_properties.publisher;
+package com.enzubis.bookshelf_spring.publisher;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

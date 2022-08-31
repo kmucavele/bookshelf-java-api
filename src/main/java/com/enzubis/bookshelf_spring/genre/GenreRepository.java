@@ -1,4 +1,4 @@
-package com.enzubis.bookshelf_spring.book.book_properties.genre;
+package com.enzubis.bookshelf_spring.genre;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
