@@ -9,6 +9,7 @@ src/test
 mvnw*
 *.DS_Store
 src/main/java/com/enzubis/bookshelf_spring/SwaggerConfig.java
+Diagrams/Bookshelf_Architecture.drawio
 
 ### STS ###
 .apt_generated
