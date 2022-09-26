@@ -13,7 +13,7 @@ build:
 	docker run -p 8086:8086 --name bookshelf-api --link bookshelf-db:mysql -d bookshelf-api
 
 # rebuild/update spring boot application (bookshelf-api) and run it with the db service
-update:
+start:
 	# remove existing docker container
 	docker container rm bookshelf-api
 
@@ -25,13 +25,6 @@ update:
 	# create/run the bookshelf-api container and link it to the mysql db image(bookshelf-db)
 	docker run -p 8086:8086 --name bookshelf-api --link bookshelf-db:mysql -d bookshelf-api
 
-# start the services
-start:
-	# start the sql container(name: 'bookshelf-db')
-	docker start bookshelf-db
-
-	# start the bookshelf-api
-	docker start bookshelf-api
 
 # stop the services
 stop:
