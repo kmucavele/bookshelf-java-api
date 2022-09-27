@@ -11,16 +11,18 @@
 
 ### Set up
 
-* navigate to the project directory 
+In a terminal 
 
-1. Start the docker daemon (e.g. Docker Desktop or Rancher Desktop)
+1. navigate to the project directory 
+
+2. Start the docker daemon (e.g. Docker Desktop or Rancher Desktop)
    * If you are running the app for the first time, run `make build`
    
 
   * If the images already exist, the run `make start` to update the spring boot app and start the services
 
 
-  * Run `make stop` to stop the servies
+  * Run `make stop` to stop the services
 
 
 ## API Endpoints
@@ -112,4 +114,73 @@ Example
   "dateOfPublication": "2019-03-08",
   "isbn": "168923674-4"
 }
+```
+
+### Get all bookshelf entries of a user
+
+GET `/api/bookshelf/:id`
+
+Returns a list of all bookshelf entries of a user = all books of a user
+
+Response Example
+```json
+[
+   {
+      "readingStatus": 0,
+      "onWishlist": false,
+      "book": {
+         "isbn": "168923674-4",
+         "title": "Osmosis (Osmose)",
+         "authors": [
+            "testAuthor1",
+            "Evania Rollett"
+         ],
+         "dateOfPublication": "08-03-2019",
+         "genres": [
+            "Drama",
+            "Romance",
+            "Comedy"
+         ],
+         "publisher": "Thoughtbridge"
+      }
+   }
+]
+```
+
+### Delete bookshelf entries
+
+DELETE `/api/bookshelf/:id/:isbn/delete`
+
+Required path variables
+   * `id` - uuid of user
+   * `isbn` - book isbn
+
+Removes a book from a users bookshelf
+
+
+### Get all books
+
+GET `/api/books`
+
+Allows you to get a list of all books 
+
+Response Example
+```json
+[
+   {
+      "isbn": "168923674-4",
+      "title": "Osmosis (Osmose)",
+      "authors": [
+         "testAuthor1",
+         "Evania Rollett"
+      ],
+      "dateOfPublication": "08-03-2019",
+      "genres": [
+         "Drama",
+         "Romance",
+         "Comedy"
+      ],
+      "publisher": "Thoughtbridge"
+   }
+]
 ```
