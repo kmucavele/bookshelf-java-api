@@ -25,7 +25,7 @@ public class BookshelfEntry {
     @JoinColumn(name = "isbn")
     private Book isbn;
 
-    // int(1 = not done, 2 = reading, 3 = done)
+    // int(0 = not done, 1 = reading, 2 = done)
     @Column(name = "reading_status", columnDefinition = "integer default 0")
     private int readingStatus;
 

@@ -1,85 +1,115 @@
 # Bookshelf Java API
 
----
-
-#### Description:
+## Description:
 
  * Java Bookshelf API written with Spring Boot
  * Provides Interfaces to store, get, update and delete Books from a user bookshelf
 
----
+## Installation
+### Requirements:
+* Docker 
 
-#### Api Documentation with Postman:
-   * [Api Doc](https://documenter.getpostman.com/view/22759795/VUxLxULx)
+### Set up
 
-    
-[//]: # (The Book Model in the swagger doc is not correct. This book model should be used instead &#40;for POST & GET&#41;:)
+* navigate to the project directory 
 
-[//]: # (````)
+1. Start the docker daemon (e.g. Docker Desktop or Rancher Desktop)
+   * If you are running the app for the first time, run `make build`
+   
 
-[//]: # ({)
+  * If the images already exist, the run `make start` to update the spring boot app and start the services
 
-[//]: # (  "authors": ["string"],)
 
-[//]: # (  "dateOfPublication": "string",)
+  * Run `make stop` to stop the servies
 
-[//]: # (  "genres": ["string"],)
 
-[//]: # (  "isbn": "string",)
+## API Endpoints
 
-[//]: # (  "publisher": "string",)
+API is available at `http://localhost:8086`
 
-[//]: # (  "title": "string")
 
-[//]: # (})
+### Get all users
 
-[//]: # (````)
+GET `/api/users`
 
----
+Allows you to get a list of all users
 
-[//]: # (#### Run the application on local server &#40;default port: 8080&#41;)
+Response Example
+```json
+[
+  {
+    "uuid": "009BVWKVgHb0ERn3edblbJgAXwI2",
+    "books": []
+  },
+  {
+    "uuid": "AwIfVh5nQge00jnfzxVtwL81tS42",
+    "books": []
+  }
+]
+```
 
-[//]: # ()
-[//]: # (Requirements:)
+### Add new user
 
-[//]: # ()
-[//]: # (* Java runtime)
+POST `/api/users/add`
+Allows you to add a new user
 
-[//]: # (  * MySQL installed &#40;create a database called "bookshelf"&#41;)
+Needs a request body in JSON format with the following properties:
 
-[//]: # (    * save your MySQL user and password in env variables)
 
-[//]: # (    ```shell)
+All properties are **Required**:
 
-[//]: # (    export SQL_USER= <your mysql username>)
+* `uuid` - String
 
-[//]: # (    export SQL_PASSWORD= <your msql password>   )
+Example
+```json
+{
+  "uuid": "pfdHKkSHvJf8pbHnb0OEXcCg2k4L"
+}
+```
 
-[//]: # (    ```)
+### Add new book to a users bookshelf
 
-[//]: # (---)
+POST `/api/bookshelf/:id/add`
 
-[//]: # (1. Download the ```target/bookshelf_spring-0.0.1-SNAPSHOT.jar``` file)
+Allows you to a new book to a users bookshelf
 
-[//]: # (2. In a terminal navigate to the directory where the file is and run:)
 
-[//]: # (   ```shell)
 
-[//]: # (   java -jar bookshelf_spring-0.0.1-SNAPSHOT.jar)
+Required Header:  
+* Content-Type: application/json
 
-[//]: # (   )
-[//]: # (   Or)
+Required path variable
+* id - uuid of a user
 
-[//]: # (   )
-[//]: # (   # to start the server on a specific port)
+Needs a request body in JSON format with the following properties:
 
-[//]: # (   java -jar bookshelf_spring-0.0.1-SNAPSHOT.jar --server.port=<port number>)
+All properties are **Required**:
 
-[//]: # (    )
-[//]: # (   ```)
+* `title` - String
 
-[//]: # (3. To check if the application is running: open)
 
-[//]: # (   [localhost:8080]&#40;http://localhost:8080&#41; in your browser &#40;or the same address with the port number that was used above&#41;)
+* `authors` - Array of Strings: [String, String, ...]
 
-[//]: # (---)
+
+* `genres` - Array of Strings: [String, String, ...]
+
+
+* `publisher` - String
+
+
+* `dateOfPubliscation` - String - Format: YYYY-MM-DD 
+
+
+* `isbn` - String
+
+Example
+```json
+{
+  "title": "Osmosis (Osmose)",
+  "authors": ["Evania Rollett", "testAuthor1"],
+  "genres": ["Comedy", "Drama", "Romance"],
+  "publisher": "Thoughtbridge",
+  "dateOfPublication": "2019-03-08",
+  "isbn": "168923674-4"
+}
+```
