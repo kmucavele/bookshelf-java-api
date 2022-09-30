@@ -21,13 +21,13 @@ public class BookController {
         return bookService.getBooks();
     }
 
-    @PostMapping(path = "add")
+    @PostMapping(path = "addBooks")
     public ResponseEntity<String> add(@RequestBody List<Book> books){
         bookService.addBooks(books);
         return new ResponseEntity<>("Books were added", HttpStatus.OK);
     }
 
-    @PostMapping(path = "add")
+    @PostMapping(path = "addBook")
     public ResponseEntity<String> add(@RequestBody Book book){
         bookService.addBook(book);
         return new ResponseEntity<>("Book was added", HttpStatus.OK);
