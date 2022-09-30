@@ -14,10 +14,7 @@ build:
 
 # rebuild/update spring boot application (bookshelf-api) and run it with the db service
 start:
-	# stop running containers
-	make stop
-
-	# 2. , remove existing docker container
+	# remove existing docker container
 	docker container rm bookshelf-api
 
 	# build the spring boot app image('bookshelf-api') based on Dockerfile

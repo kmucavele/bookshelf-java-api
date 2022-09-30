@@ -9,6 +9,27 @@
 	"item": [
 		{
 			"name": "Get all users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"",
+							"    const allUsers = pm.response.json();",
+							"",
+							"    const randIndex = Math.floor(Math.random() * allUsers.length);",
+							"",
+							"    const randomUserId = allUsers[randIndex].uuid;",
+							"",
+							"    pm.collectionVariables.set(\"uuid\", randomUserId);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -20,12 +41,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/users",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/api/users",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"users"
@@ -88,6 +107,17 @@
 		},
 		{
 			"name": "Add new User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", () => pm.response.to.have.status(201));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -101,12 +131,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/users/add",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/api/users/add",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"users",
@@ -228,6 +256,27 @@
 		},
 		{
 			"name": "Add new book to a users bookshelf",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", () => pm.response.to.have.status(201));",
+							"pm.test(\"Book was added to corrrect bookshelf/User\", () => {",
+							"    ",
+							"    const res = pm.response;",
+							"",
+							"    console.log(res);",
+							"    console.log(typeof(res));",
+							"",
+							"    console.log(res.includes(pm.collectionVariables.get(\"uuid\")));",
+							"",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -239,7 +288,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"title\": \"Osmosis (Osmose)\",\n  \"authors\": [\"Evania Rollett\", \"testAuthor1\"],\n  \"genres\": [\"Comedy\", \"Drama\", \"Romance\"],\n  \"publisher\": \"Thoughtbridge\",\n  \"dateOfPublication\": \"2007-03-08\",\n  \"isbn\": \"168923674-4\"\n}",
+					"raw": "{\n  \"title\": \"Osmosis (Osmose)\",\n  \"authors\": [\"Evania Rollett\", \"testAuthor1\"],\n  \"genres\": [\"Comedy\", \"Drama\", \"Romance\"],\n  \"publisher\": \"Thoughtbridge\",\n  \"dateOfPublication\": \"2019-03-08\",\n  \"isbn\": \"168923674-4\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -247,17 +296,21 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/bookshelf/TzOF19jkvPUzEg5rWtrSHQ49Esg2/add",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/api/bookshelf/:id/add",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"bookshelf",
-						"TzOF19jkvPUzEg5rWtrSHQ49Esg2",
+						":id",
 						"add"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "{{uuid}}"
+						}
 					]
 				},
 				"description": "#### Adds a new book to a users bookshelf\n\n#### path: api/bookshelf/{userId}/add"
@@ -459,16 +512,20 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/bookshelf/TzOF19jkvPUzEg5rWtrSHQ49Esg2",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/api/bookshelf/:id",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"bookshelf",
-						"TzOF19jkvPUzEg5rWtrSHQ49Esg2"
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "{{uuid}}"
+						}
 					]
 				},
 				"description": "#### Get all books from a users bookshelf\n\n#### path: api/bookshelf/{userId}"
@@ -580,17 +637,15 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/bookshelf/TzOF19jkvPUzEg5rWtrSHQ49Esg2/168923674-4/delete",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/api/bookshelf/:id/:isbn/delete",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"bookshelf",
-						"TzOF19jkvPUzEg5rWtrSHQ49Esg2",
-						"168923674-4",
+						":id",
+						":isbn",
 						"delete"
 					],
 					"query": [
@@ -598,6 +653,16 @@
 							"key": "",
 							"value": "",
 							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "{{uuid}}"
+						},
+						{
+							"key": "isbn",
+							"value": "{{isbn}}"
 						}
 					]
 				},
@@ -824,11 +889,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/books",
+					"raw": "{{baseUrl}}/api/books",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"books"
@@ -894,6 +958,195 @@
 					"body": "[\n    {\n        \"isbn\": \"168923674-4\",\n        \"title\": \"Osmosis (Osmose)\",\n        \"authors\": [\n            \"testAuthor1\",\n            \"Evania Rollett\"\n        ],\n        \"dateOfPublication\": \"07-03-2007\",\n        \"genres\": [\n            \"Drama\",\n            \"Romance\",\n            \"Comedy\"\n        ],\n        \"publisher\": \"Thoughtbridge\"\n    }\n]"
 				}
 			]
+		},
+		{
+			"name": "Update on wish list or reading status",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/bookshelf/:id/168923674-4?wishlist=true&status=2",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"bookshelf",
+						":id",
+						"168923674-4"
+					],
+					"query": [
+						{
+							"key": "wishlist",
+							"value": "true"
+						},
+						{
+							"key": "status",
+							"value": "2"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "{{uuid}}"
+						}
+					]
+				},
+				"description": "#### The reading or wish list status can be changed with this route\n\n* * *\n\n#### At least one query parameter must be present in the url!\n\n* * *\n\n##### path: /api/bookshelf/{userId}/{isbn}?wishlist={boolean}&status={0 || 1 || 2}\n\n* * *\n\n##### Reading status: 0 = Not Reading, 1 = Reading, 2 = Done Reading"
+			},
+			"response": [
+				{
+					"name": "Update on wish list or reading status",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/bookshelf/TzOF19jkvPUzEg5rWtrSHQ49Esg2/168923674-4?wishlist=true&status=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bookshelf",
+								"TzOF19jkvPUzEg5rWtrSHQ49Esg2",
+								"168923674-4"
+							],
+							"query": [
+								{
+									"key": "wishlist",
+									"value": "true"
+								},
+								{
+									"key": "status",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "21"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 30 Aug 2022 13:46:07 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "Update was successful"
+				}
+			]
+		},
+		{
+			"name": "Add new Books (takes a list)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"title\": \"Osmosis (Osmose)\",\n        \"authors\": [\n            \"Evania Rollett\",\n            \"testAuthor1\"\n        ],\n        \"genres\": [\n            \"Comedy\",\n            \"Drama\",\n            \"Romance\"\n        ],\n        \"publisher\": \"Thoughtbridge\",\n        \"dateOfPublication\": \"2019-03-08\",\n        \"isbn\": \"168923674-4\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/books/addBooks",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"books",
+						"addBooks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a single book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"title\": \"Osmosis (Osmose)\",\n        \"authors\": [\n            \"Evania Rollett\",\n            \"testAuthor1\"\n        ],\n        \"genres\": [\n            \"Comedy\",\n            \"Drama\",\n            \"Romance\"\n        ],\n        \"publisher\": \"Thoughtbridge\",\n        \"dateOfPublication\": \"2019-03-08\",\n        \"isbn\": \"168923674-4\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/books/addBook",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"books",
+						"addBook"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "uuid",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8086",
+			"type": "string"
+		},
+		{
+			"key": "isbn",
+			"value": "168923674-4",
+			"type": "string"
 		}
 	]
 }
