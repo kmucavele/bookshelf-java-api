@@ -54,4 +54,8 @@ public class BookService {
 
         return bookOptional.get();
     }
+
+    public void addBooks(List<Book> books) {
+        books.forEach(this::addBook);
+    }
 }
