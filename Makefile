@@ -14,7 +14,10 @@ build:
 
 # rebuild/update spring boot application (bookshelf-api) and run it with the db service
 start:
-	# remove existing docker container
+	# stop running containers
+	make stop
+
+	# 2. , remove existing docker container
 	docker container rm bookshelf-api
 
 	# build the spring boot app image('bookshelf-api') based on Dockerfile
@@ -33,3 +36,17 @@ stop:
 
 	# stop the bookshelf-api
 	docker stop bookshelf-api
+
+# enter the mysql container
+enter-db-container:
+	docker exec -it bookshelf-db bash
+
+# get spring boot application logs
+api-logs:
+	docker container logs bookshelf-api
+
+# get database logs
+database-logs:
+	docker container logs bookshelf-db
+
+
