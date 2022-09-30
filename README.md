@@ -27,6 +27,8 @@ In a terminal
 
 ## API Endpoints
 
+[Postman Documentation](https://documenter.getpostman.com/view/22759795/VUxLxULx)
+
 API is available at `http://localhost:8086`
 
 
