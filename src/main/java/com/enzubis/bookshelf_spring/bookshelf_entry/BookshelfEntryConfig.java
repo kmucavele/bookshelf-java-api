@@ -26,10 +26,6 @@ public class BookshelfEntryConfig {
             User allie = new User("BNPW5oKLRhXD2UG11EpEndBdBzy2");
             User hurleigh = new User("LuApbNIFD4RvdUFAakcAUBu2R6W2");
             User levy = new User("TzOF19jkvPUzEg5rWtrSHQ49Esg2");
-            User test1 = new User("pfdHKkSHvJf8pbHnb0OEXcCgY6l1");
-            User test2 = new User("rHWb6nUXHRWd3APphm93XBWAJat2");
-            User test3 = new User("vtPvNjdbipYw1ZpNTItz773cwLm2");
-            User test4 = new User("w2CUnMBB1qRur8aRh8w0uW64fWC2");
 
 
             // Authors test data
@@ -42,8 +38,6 @@ public class BookshelfEntryConfig {
             // Publishers test data
             Publisher macejkovicFeeney = new Publisher("Macejkovic-Feeney");
             Publisher friesenAndSons = new Publisher("Friesen and Sons");
-            Publisher prosaccoKirlinAndTorphy = new Publisher("Prosacco, Kirlin and Torphy");
-            Publisher kuhnInc = new Publisher("Kuhn Inc");
             Publisher mayertKoepp = new Publisher("Mayert-Koepp");
 
             // Genres test data
@@ -56,21 +50,17 @@ public class BookshelfEntryConfig {
 
             Book thrive = new Book("938323406-7", "Thrive", Set.of(zollyGallyon), "2012-07-25", Set.of(drama), macejkovicFeeney);
 
-            Book amazonWomenOnTheMoon = new Book("099315114-0", "Amazon Women on the Moon", Set.of(cathrynEthridge, estevanHackett), "1990-07-25", Set.of(horror, romance),
-                    mayertKoepp);
+            Book amazonWomenOnTheMoon = new Book("099315114-0", "Amazon Women on the Moon", Set.of(cathrynEthridge, estevanHackett), "1990-07-25", Set.of(horror, romance), mayertKoepp);
 
-            Book cornIsland = new Book("696409388-5", "Corn Island", Set.of(farahBlaase, estevanHackett, kathyeLindmark), "2004-05-07", Set.of(comedy, drama, musical),
-                    friesenAndSons);
+            Book cornIsland = new Book("696409388-5", "Corn Island", Set.of(farahBlaase, estevanHackett, kathyeLindmark), "2004-05-07", Set.of(comedy, drama, musical), friesenAndSons);
 
             // insert test users into users table
-            userRepository.saveAll(
-                    List.of(eveline, bell, allie, hurleigh, levy)
-            );
+            userRepository.saveAll(List.of(eveline, bell, allie, hurleigh, levy));
 
             // insert test books into books table
-/*            bookRepository.saveAll(
+            bookRepository.saveAll(
                     List.of(thrive, amazonWomenOnTheMoon, cornIsland)
-            );*/
+            );
         };
     }
 }
