@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  bookshelf-mysqldb:
+    container_name: bookshelf-mysqldb
+    image: mysql:8
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=$DATABASE_PASSWORD
+      - MYSQL_DATABASE=$DATABASE_NAME
+    ports:
+      - $DATABASE_LOCAL_PORT:$DATABASE_DOCKER_PORT
+  bookshelf-api:
+    container_name: bookshelf-api
+    depends_on:
+      - bookshelf-mysqldb
+    build: .
+    restart: on-failure
+    env_file: ./.env
+    ports:
+      - $SPRING_BOOT_LOCAL_PORT:$SPRING_BOOT_DOCKER_PORT
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url"  : "jdbc:mysql://bookshelf-mysqldb:$DATABASE_DOCKER_PORT/$DATABASE_NAME?useSSL=false&allowPublicKeyRetrieval=true",
+        "spring.datasource.username" : "$DATABASE_USER",
+        "spring.datasource.password" : "$DATABASE_PASSWORD",
+        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+        "spring.jpa.hibernate.ddl-auto" : "update"
+      }'
+    stdin_open: true
+    tty: true
+
+volumes:
+  db:
