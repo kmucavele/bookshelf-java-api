@@ -1,4 +1,4 @@
-package com.enzubis.bookshelf_spring.publisher;
+package com.me.bookshelf_spring.publisher;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

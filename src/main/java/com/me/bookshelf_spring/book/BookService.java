@@ -1,8 +1,8 @@
-package com.enzubis.bookshelf_spring.book;
+package com.me.bookshelf_spring.book;
 
-import com.enzubis.bookshelf_spring.author.Author;
-import com.enzubis.bookshelf_spring.genre.GenreService;
-import com.enzubis.bookshelf_spring.publisher.PublisherService;
+import com.me.bookshelf_spring.author.Author;
+import com.me.bookshelf_spring.genre.GenreService;
+import com.me.bookshelf_spring.publisher.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

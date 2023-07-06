@@ -1,4 +1,4 @@
-package com.enzubis.bookshelf_spring.book;
+package com.me.bookshelf_spring.book;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

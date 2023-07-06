@@ -1,4 +1,4 @@
-package com.enzubis.bookshelf_spring.author;
+package com.me.bookshelf_spring.author;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

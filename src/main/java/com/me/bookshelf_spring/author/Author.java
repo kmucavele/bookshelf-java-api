@@ -1,6 +1,6 @@
-package com.enzubis.bookshelf_spring.author;
+package com.me.bookshelf_spring.author;
 
-import com.enzubis.bookshelf_spring.book.Book;
+import com.me.bookshelf_spring.book.Book;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;

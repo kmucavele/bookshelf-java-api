@@ -1,7 +1,7 @@
-package com.enzubis.bookshelf_spring.bookshelf_entry;
+package com.me.bookshelf_spring.bookshelf_entry;
 
-import com.enzubis.bookshelf_spring.book.Book;
-import com.enzubis.bookshelf_spring.user.User;
+import com.me.bookshelf_spring.book.Book;
+import com.me.bookshelf_spring.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

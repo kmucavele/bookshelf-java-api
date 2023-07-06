@@ -1,6 +1,6 @@
-package com.enzubis.bookshelf_spring.user;
+package com.me.bookshelf_spring.user;
 
-import com.enzubis.bookshelf_spring.bookshelf_entry.BookshelfEntry;
+import com.me.bookshelf_spring.bookshelf_entry.BookshelfEntry;
 
 import javax.persistence.*;
 import java.util.HashSet;
