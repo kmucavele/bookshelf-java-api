@@ -3,7 +3,7 @@
 ## Description:
 
  * Java Bookshelf API written with Spring Boot
- * Provides Interfaces to store, get, update and delete Books from a user bookshelf
+ * Provides an API to store, get, update and delete Books from a user bookshelf
 
 ## Installation
 ### Requirements:
