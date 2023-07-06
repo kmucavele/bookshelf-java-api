@@ -9,7 +9,7 @@ src/test
 .mvn
 mvnw*
 *.DS_Store
-src/main/java/com/enzubis/bookshelf_spring/SwaggerConfig.java
+src/main/java/com/me/bookshelf_spring/SwaggerConfig.java
 Diagrams/Bookshelf_Architecture.drawio
 
 ### STS ###
@@ -42,5 +42,5 @@ build/
 
 
 ### sensitive files
-service_account_credentials
-
+.env
+.env.local
