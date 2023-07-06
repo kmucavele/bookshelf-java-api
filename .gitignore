@@ -5,6 +5,7 @@ HELP.md
 target/**/
 target/bookshelf_spring-0.0.1-SNAPSHOT.jar
 target/*.original
+**bookshelf-api.jar
 src/test
 .mvn
 mvnw*
