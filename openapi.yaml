@@ -1,285 +1,92 @@
 openapi: 3.0.0
 info:
-  title: HeadLess-Spring-Aplication (DMS)
+  title: Bookshelf API
   version: 1.0.0
 servers:
-  - url: http://localhost:8080
+  - url: http://localhost:8086
 tags:
-  - name: Address
-  - name: Department
-  - name: Doctor
-  - name: Facility
+  - name: Book
+  - name: Bookshelf
+  - name: User
+  - name: Bookshelf Entry
 paths:
-  /api/v1/address:
+  /api/books:
     post:
       tags:
-        - Address
-      summary: Adding new Address
+        - Book
+      summary: Add a single Book
+
       requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                street: neue
-                houseNumber: '420'
-                postCode: 14558
-                location: Feld
-      responses:
-        '200':
           description: Successful response
           content:
-            application/json: {}
-    get:
-      tags:
-        - Address
-      summary: Get all Addresses
+            application/json:
+              schema:
+                type: object
+                properties:
+                  book:
+                    type: object
+                    example:
+                      $ref: '#/components/schemas/Book'
       responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - Address
-      summary: Delete multiple Addresses by ID
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v1/address/53:
-    put:
-      tags:
-        - Address
-      summary: Updating Address
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                street: Alte
-                houseNumber: 1B
-                postCode: 11111
-                location: Bauer
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - Address
-      summary: Get Address by ID
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v1/address/29:
-    delete:
-      tags:
-        - Address
-      summary: Delete Address by ID
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v1/department:
-    post:
-      tags:
-        - Department
-      summary: Adding new Department
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                name: NeuenNeu D
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - Department
-      summary: Get all Departments
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - Department
-      summary: Delete multiple Departments by ID
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v1/department/65:
-    put:
-      tags:
-        - Department
-      summary: Updating Department
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                name: SuperCoolDepartment
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - Department
-      summary: Get Department by ID
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v1/department/129:
-    delete:
-      tags:
-        - Department
-      summary: Delete Department by ID
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v1/doctor:
-    post:
-      tags:
-        - Doctor
-      summary: Adding new Doctor
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                firstName: Werner
-                lastName: Kessel
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - Doctor
-      summary: Get all Doctors
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - Doctor
-      summary: Delete multiple Doctors by ID
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v1/doctor/1293:
-    put:
-      tags:
-        - Doctor
-      summary: Updating Doctor
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                firstName: Peter
-                lastName: Pahn
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - Doctor
-      summary: Get Doctor by ID
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v1/doctor/1210:
-    delete:
-      tags:
-        - Doctor
-      summary: Delete Doctor by ID
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v1/facility:
-    post:
-      tags:
-        - Facility
-      summary: Adding new Facility
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                name: TestFacility2
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - Facility
-      summary: Get all Facilities
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - Facility
-      summary: Delete multiple Facilities by ID
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v1/facility/177647:
-    put:
-      tags:
-        - Facility
-      summary: Updating Facility
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                name: Cooles Neues Facility
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        uuid:
+          type: string
+          example: "009BVWKVgHb0ERn3edblbJgAXwI2"
+        books:
+          type: array
+          items:
+            $ref: '#/components/schemas/Book'
+    Book:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Osmosis (Osmose)
+
+        authors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Author'
+
+        genres:
+          type: array
+          items:
+            $ref: '#/components/schemas/Genre'
+
+        publisher:
+          type: string
+          example: Thoughtbridge
+
+        dateOfPublication:
+          type: string
+          example: 08-03-2019
+
+        isbn:
+          type: string
+          example: 168923674-4
+    Bookshelf Entry:
+        type: object
+        properties:
+          readingStatus:
+            type: integer
+            example: 0, 1 or 2 - (0 = not done, 1 = reading, 2 = done)
+          onWishlist:
+            type: boolean
+          book:
+            type: object
+            example:
+              $ref: '#/components/schemas/Book'
+    Author:
+      type: string
+      example: Evania Rollett
+    Genre:
+      type: string
+      example: "Comedy"
+    Publisher:
+      type: string
+      example: Thoughtbridge
