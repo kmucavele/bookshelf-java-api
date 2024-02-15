@@ -9,7 +9,6 @@ tags:
   - name: Book
   - name: Bookshelf
   - name: Users
-  - name: Bookshelf Entry
 paths:
   /api/users/books:
     get:
@@ -50,10 +49,40 @@ paths:
                   type: string
                   example: 'User with uuid: 009BVWKVgHb0ERn3edblbJgAXwI2 was registered.'
 
+  /api/bookshelf/{id}/add:
+    post:
+      tags:
+        - Bookshelf
+      summary: Add new book to a users bookshelf
+      parameters:
+        - name: id
+          in: path
+          description: Uuid of a user
+          required: true
+          schema:
+            type: integer
+      requestBody:
+          description: Takes a book object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  book:
+                    $ref: '#/components/schemas/Book'
+      responses:
+        201:
+          description: Created
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'The Book Osmosis (Osmose)(isbn: 168923674-4) was added to the bookshelf of: TzOF19jkvPUzEg5rWtrSHQ49Esg2.'
 components:
   schemas:
     User:
       type: object
+      description: Represents a user and
       properties:
         uuid:
           type: string
