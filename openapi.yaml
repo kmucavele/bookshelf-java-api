@@ -1,33 +1,54 @@
 openapi: 3.0.0
 info:
   title: Bookshelf API
+  description: Bookshelf Api - Save, modify or delete your bookshelf entries in a database
   version: 1.0.0
 servers:
   - url: http://localhost:8086
 tags:
   - name: Book
   - name: Bookshelf
-  - name: User
+  - name: Users
   - name: Bookshelf Entry
 paths:
-  /api/books:
-    post:
+  /api/users/books:
+    get:
       tags:
-        - Book
-      summary: Add a single Book
-
-      requestBody:
-          description: Successful response
+        - Users
+      summary: Get a list of all users and their bookshelf entries
+      responses:
+        200:
+          description: Returns a user uuid and their books in a list
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  book:
-                    type: object
-                    example:
-                      $ref: '#/components/schemas/Book'
-      responses:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+
+  /api/users/add:
+      post:
+        tags:
+          - Users
+        summary: Adds a new user
+        description: New user is created along with a bookshelf entry list
+        requestBody:
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    uuid:
+                      type: string
+                      example: '009BVWKVgHb0ERn3edblbJgAXwI2'
+        responses:
+          201:
+            description: Created
+            content:
+              text/plain:
+                schema:
+                  type: string
+                  example: 'User with uuid: 009BVWKVgHb0ERn3edblbJgAXwI2 was registered.'
 
 components:
   schemas:
@@ -36,7 +57,7 @@ components:
       properties:
         uuid:
           type: string
-          example: "009BVWKVgHb0ERn3edblbJgAXwI2"
+          example: '009BVWKVgHb0ERn3edblbJgAXwI2'
         books:
           type: array
           items:
@@ -86,7 +107,7 @@ components:
       example: Evania Rollett
     Genre:
       type: string
-      example: "Comedy"
+      example: 'Comedy'
     Publisher:
       type: string
       example: Thoughtbridge
